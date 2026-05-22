@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# sudo apt update
+# sudo apt install -y ninja-build python3-mako pkg-config bison flex python3-pip python3-venv
+# python3 -m venv .venv
+# source .venv/bin/activate
+# pip install meson==1.4.0 pyyaml setuptools (setuptoools since distutils is deprecated)
+
+# git clone https://github.com/KhronosGroup/glslang.git
+# cd glslang
+# python update_glslang_sources.py
+# mkdir build
+# cd build
+# cmake ..
+# make -j16
+# sudo make install
+# which glslangValidator
+
+cd /users/Lakshman/mesa
+
+NDK=/users/Lakshman/android-ndk-r27d
+HOST=linux-x86_64
+API=29
+TC=$NDK/toolchains/llvm/prebuilt/$HOST
+
+cat > android-aarch64.cross <<EOF
+[binaries]
+ar = '$TC/bin/llvm-ar'
+c = ['$TC/bin/aarch64-linux-android${API}-clang']
+cpp = ['$TC/bin/aarch64-linux-android${API}-clang++']
+strip = '$TC/bin/llvm-strip'
+pkg-config = '/bin/false'
+
+[host_machine]
+system = 'android'
+cpu_family = 'aarch64'
+cpu = 'aarch64'
+endian = 'little'
+
+[properties]
+needs_exe_wrapper = true
+EOF
+
+# Force fallback is for the libdrm dependency
+# Android strict has a fail conditon in vk_physical_device.c that makes it just drop any extension that is not on android's compatibility allowlist. So the strict is set to false.
+
+meson setup build-android \
+  --cross-file android-aarch64.cross \
+  -Dallow-fallback-for=libdrm \
+  --force-fallback-for=zlib,expat \
+  --wrap-mode=default \
+  -Dplatforms=android \
+  -Dplatform-sdk-version=29 \
+  -Dandroid-stub=true \
+  -Dandroid-strict=false \
+  -Dvulkan-drivers=freedreno \
+  -Dgallium-drivers= \
+  -Dfreedreno-kmds=kgsl \
+  -Dperfetto=false \
+  -Dgles1=disabled -Dgles2=disabled -Degl=disabled -Dglx=disabled \
+  -Dllvm=disabled -Dshared-llvm=disabled \
+  -Dbuildtype=release \
+  -Db_lto=false
+
+ninja -C build-android src/freedreno/vulkan/libvulkan_freedreno.so

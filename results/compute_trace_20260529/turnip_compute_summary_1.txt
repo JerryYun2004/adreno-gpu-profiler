@@ -1,0 +1,73 @@
+=== Event counts ===
+kgsl_mem_alloc                 13
+kgsl_mem_free                  13
+kgsl_pwrstats                  5
+kgsl_buslevel                  4
+adreno_cmdbatch_queued         3
+adreno_cmdbatch_ready          3
+adreno_cmdbatch_submitted      3
+adreno_cmdbatch_retired        3
+adreno_cmdbatch_done           3
+kgsl_pwr_request_state         2
+kgsl_pwr_set_state             2
+kgsl_mem_map                   2
+kgsl_context_create            1
+kgsl_pwrlevel                  1
+gpu_frequency                  1
+
+=== Command batch timing ===
+submitted batches: 3
+retired batches:   3
+avg active:         1382462.7 ticks
+max active:         4145923 ticks
+avg queue_to_start: 6677.0 ticks
+max queue_to_start: 8629 ticks
+avg gmu_latency:    147.0 ticks
+max gmu_latency:    175 ticks
+
+Top 10 longest active command batches:
+ctx=15 ts=1 active=4145923 queue_to_start=5372 gmu_latency=152
+ctx=8 ts=42638 active=1042 queue_to_start=8629 gmu_latency=175
+ctx=8 ts=42639 active=423 queue_to_start=6030 gmu_latency=114
+
+=== Per-context retired batch counts ===
+ctx=8: 2
+ctx=15: 1
+
+=== kgsl_pwrstats ===
+samples:            5
+avg busy_pct:       97.99%
+max busy_pct:       99.98%
+avg ram_wait_pct:   34.77%
+max ram_wait_pct:   56.27%
+avg context_count:  1.00
+max context_count:  1
+
+=== kgsl_gpubusy ===
+No kgsl_gpubusy samples found.
+
+=== Frequency / power ===
+freq samples:       [1100000]
+min freq:           1100000 kHz
+max freq:           1100000 kHz
+pwrlevel changes:   1
+buslevel samples:   4
+avg avg_bw:         1570.8
+max avg_bw:         4649
+
+=== Memory by usage ===
+any(0)                          4.77 MiB
+surface                         1.13 MiB
+egl_image                       1.13 MiB
+
+=== Memory event counts ===
+alloc any(0)                    13
+free  any(0)                    13
+map   egl_image                 1
+map   surface                   1
+
+=== Memory bytes by event type and usage ===
+alloc any(0)                          2.38 MiB
+free  any(0)                          2.38 MiB
+map   surface                         1.13 MiB
+map   egl_image                       1.13 MiB

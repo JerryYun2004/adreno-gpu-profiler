@@ -1,0 +1,22 @@
+# Manifest: phone_cleanup_old
+
+Generated: Fri  5 Jun 2026 14:40:02 BST
+Source phone pull: /Users/jerryyun/adreno_phone_pull_20260605_143858/jerry_work
+Evidence folder: evidence/raw_logs/phone_cleanup_old
+
+## Files
+4.0K  218b6f89c02141445c262b86a6c8e5098f0122461b463b97c0009bd33c232625  evidence/raw_logs/phone_cleanup_old/kgsl_busy_sampler.log.gz
+48K  aac3005103ebfb3895a62462aa9deb85e35bdf1925f780cf222fdbbb06efd891  evidence/raw_logs/phone_cleanup_old/logcat.log.gz
+4.0K  7c583cd4c6e6466bb65f2274bee37ef1a5065d8668ccf54e60796874ca94bf83  evidence/raw_logs/phone_cleanup_old/kgsl_sampler_stderr.log.gz
+4.0K  e4e9ffb37f8e427362ab99bfe3023f0619c5eec80434c48875c890685060175f  evidence/raw_logs/phone_cleanup_old/kgsl_trace_setup_validation.sh
+4.0K  fc20050abb52370e3ba305f8ef93b8f3c35d8cc2f19f5c3b6841b411adee84a7  evidence/raw_logs/phone_cleanup_old/kgsl_fast_sampler_stdout.log.gz
+4.0K  bdf293863ad148dbcaef2182ac965451424494d2206275399874b12c95d0d27a  evidence/raw_logs/phone_cleanup_old/kgsl_fast_samples.csv.gz
+4.0K  3c154f5f9c1156a6eed6945dc37135c8ef2c70534e12a8dd724e69fcba3295ab  evidence/raw_logs/phone_cleanup_old/kgsl_trace_setup_compute.sh
+4.0K  327325868840566613a61d65bb14174d825245dc45f21faf45e4686b300f9f7b  evidence/raw_logs/phone_cleanup_old/kgsl_sysfs_busy_samples.csv.gz
+4.0K  a60c8c06a1afd8c5a359cb2349b2cb4f2153f4aa2fe1578debcdbfe72a422d95  evidence/raw_logs/phone_cleanup_old/kgsl_all_node_sampler.sh
+4.0K  fb387590eebfb51a169e3afdc2a5b7d6e761980232bcdcef7c6da91a653bf09f  evidence/raw_logs/phone_cleanup_old/tracepoints_enabled_state.csv.gz
+4.0K  56d2ba67ca96194baa58a5931c2c6f496f953c26bd9d829629904b419c0b5cf3  evidence/raw_logs/phone_cleanup_old/kgsl_all_node_samples.csv.gz
+4.0K  65acb2016aed40ba12065cad0d91b875768b43c7b680572a28e604b43c65bcc2  evidence/raw_logs/phone_cleanup_old/kgsl_busy_sampler.sh
+4.0K  cf4c96dafba1741aa33633daaeb88c014b3f0fe77d2b5fdcd6ac8f97b6f88937  evidence/raw_logs/phone_cleanup_old/kgsl_fast_sampler_stderr.log.gz
+16K  b91282628d7b73312071619dda6c84b8d4ccdf6fae61a99ff4b9f1cd6813fa05  evidence/raw_logs/phone_cleanup_old/logcat2.log.gz
+4.0K  d3ca31e6eba866c81989c3af6328375314b4adbc6f5862b2c4de2d7f390cf398  evidence/raw_logs/phone_cleanup_old/kgsl_sampler_stdout.log.gz

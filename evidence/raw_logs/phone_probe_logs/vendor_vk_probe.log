@@ -1,0 +1,28 @@
+[vk_probe] Starting Vulkan probe...
+[vk_probe] Vulkan loader API version: 1.3.0
+[vk_probe] Physical device count: 1
+
+[vk_probe] Device 0
+  name: Adreno (TM) 830
+  vendorID: 0x5143
+  deviceID: 0x44050001
+  apiVersion: 1.3.284
+  driverVersion: 0x80320015
+  deviceType: 1
+  timestampComputeAndGraphics: 1
+  timestampPeriod: 52.083332 ns
+  VK_KHR_driver_properties supported: yes
+  driverName: Qualcomm Technologies Inc. Adreno Vulkan Driver
+  driverInfo: Driver Build: e1e25c2793, I95c8bc5752, 1733222351
+Date: 12/03/24
+Compiler Version: E031.47.18.13
+Driver Branch: 
+
+  driverID: 8
+  conformanceVersion: 1.3.0.8
+  queue families: 3
+    queue[0]: count=3 flags=0x19f GRAPHICS COMPUTE TRANSFER
+    queue[1]: count=1 flags=0x2 COMPUTE
+    queue[2]: count=1 flags=0x8
+
+[vk_probe] Done.

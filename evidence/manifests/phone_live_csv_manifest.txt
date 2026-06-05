@@ -1,0 +1,12 @@
+# Manifest: phone_live_csv
+
+Generated: Fri  5 Jun 2026 14:40:02 BST
+Source phone pull: /Users/jerryyun/adreno_phone_pull_20260605_143858/jerry_work
+Evidence folder: evidence/raw_logs/phone_live_csv
+
+## Files
+4.0K  535121bb1c69626c5cce2ff4f3417ab339322b377df33e1e57e13d409ce08140  evidence/raw_logs/phone_live_csv/mem_live_long.csv.gz
+4.0K  dc75163eb53c961c67307017c6601c62e71de64cb30a6120351368890f027f6f  evidence/raw_logs/phone_live_csv/alu_live_test.csv.gz
+4.0K  704893df6eb312201641cf564683364fe971540a3b0db76a0bf453ca14384ff0  evidence/raw_logs/phone_live_csv/mem_live_test.csv.gz
+4.0K  c28854ac8a47e88fde6123e57877306e87013ff8029ff8c092e4fee01c0afdbc  evidence/raw_logs/phone_live_csv/alu_live_long.csv.gz
+4.0K  aa9be10b81484ad073a1cba4635c940762fd769f7f800526cc3579c8e07ab104  evidence/raw_logs/phone_live_csv/test_fast_samples.csv.gz

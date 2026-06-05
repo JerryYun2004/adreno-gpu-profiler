@@ -1,0 +1,15 @@
+JERRY_RAW_CREATE: requested_counter_index=3 app_idx=0 gid=0 cid=3 group=CP countable=PERF_CP_BUSY_CYCLES\nJERRY_RAW_BEGIN_AVAIL_ONLY: query=0 skipping raw counter begin\nJERRY_RAW_END_AVAIL_ONLY: query=0 result_iova=0x4000056008 available_iova=0x4000056000\n[vk_perf_read_probe] Starting
+[vk_perf_read_probe] counter_index=3 fill_repeats=512 buffer_mb=64
+[vk_perf_read_probe] Device: Adreno (TM) 830
+[vk_perf_read_probe] vendorID=0x5143 deviceID=0x44050001 api=1.4.352
+[vk_perf_read_probe] Using queue family 0 flags=0xf
+[vk_perf_read_probe] performanceCounterQueryPools supported: 1
+[vk_perf_read_probe] performanceCounterMultipleQueryPools supported: 0
+[vk_perf_read_probe] Acquired profiling lock
+[vk_perf_read_probe] Created performance query pool
+[vk_perf_read_probe] Work submitted and completed
+[vk_perf_read_probe] Read mode WAIT: VkResult=0 value=305419896
+[vk_perf_read_probe] Read mode PARTIAL: VkResult=0 value=305419896
+[vk_perf_read_probe] Read mode PARTIAL+AVAIL: VkResult=0 value=4600387192 availability=0
+[vk_perf_read_probe] Released profiling lock
+[vk_perf_read_probe] Done

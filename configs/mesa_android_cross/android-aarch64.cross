@@ -1,0 +1,15 @@
+[binaries]
+ar = '/Users/jerryyun/android-ndk-r27d/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-ar'
+c = ['/Users/jerryyun/android-ndk-r27d/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android29-clang']
+cpp = ['/Users/jerryyun/android-ndk-r27d/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android29-clang++']
+strip = '/Users/jerryyun/android-ndk-r27d/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip'
+pkg-config = '/bin/false'
+
+[host_machine]
+system = 'android'
+cpu_family = 'aarch64'
+cpu = 'aarch64'
+endian = 'little'
+
+[properties]
+needs_exe_wrapper = true

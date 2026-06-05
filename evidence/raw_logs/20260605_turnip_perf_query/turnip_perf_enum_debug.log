@@ -1,0 +1,17 @@
+JERRY_PERF_ENUM_ENTER: queue=0 pCounters=0x0 pDesc=0x0 initial_pCounterCount=0 TU_DEBUG_PERFCRAW=1 TU_DEBUG_PERFC=0 chip=8 gpu_id=6850 selectable=1\nJERRY_PERF_ENUM_RAW: group_ptr=0x0 group_count=0\nJERRY_PERF_ENUM_ENTER: queue=1 pCounters=0x0 pDesc=0x0 initial_pCounterCount=0 TU_DEBUG_PERFCRAW=1 TU_DEBUG_PERFC=0 chip=8 gpu_id=6850 selectable=1\nJERRY_PERF_ENUM_RAW: group_ptr=0x0 group_count=0\n[vk_perf_enum_probe] Starting
+
+[vk_perf_enum_probe] Device 0
+  name: Adreno (TM) 830
+  vendorID: 0x5143
+  deviceID: 0x44050001
+  queue families: 2
+
+  [queue family 0]
+    flags=0xf count=1
+    performance counters: 0
+
+  [queue family 1]
+    flags=0x8 count=1
+    performance counters: 0
+
+[vk_perf_enum_probe] Done

@@ -1,0 +1,1 @@
+JERRY_RAW_CREATE: requested_counter_index=3 app_idx=0 gid=0 cid=3 group=CP countable=PERF_CP_BUSY_CYCLES\nJERRY_RAW_BEGIN: query=0 counter_count=1 group_count=28 has_pred_bit=1 in_renderpass=0\nJERRY_PERF_PASS_START_UNCONDITIONAL: pass=0 has_pred_bit=1\nSegmentation fault 

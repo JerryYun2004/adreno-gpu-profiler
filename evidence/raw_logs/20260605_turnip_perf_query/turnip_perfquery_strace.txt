@@ -1,0 +1,1 @@
+/system/bin/sh: strace: inaccessible or not found

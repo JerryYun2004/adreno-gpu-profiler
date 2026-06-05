@@ -1,0 +1,15 @@
+13 kgsl_mem_free
+13 kgsl_mem_alloc
+9 kgsl_pwrstats
+8 kgsl_hwsched-1260
+3 kgsl_buslevel
+2 kgsl_pwr_set_state
+2 kgsl_pwr_request_state
+1 kgsl_pwrlevel
+1 kgsl_context_create
+1 gpu_frequency
+1 adreno_cmdbatch_submitted
+1 adreno_cmdbatch_retired
+1 adreno_cmdbatch_ready
+1 adreno_cmdbatch_queued
+1 adreno_cmdbatch_done

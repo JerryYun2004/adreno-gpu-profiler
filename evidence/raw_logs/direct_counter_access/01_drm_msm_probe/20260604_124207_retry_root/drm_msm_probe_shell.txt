@@ -1,0 +1,6 @@
+
+=== Probe /dev/dri/renderD128 ===
+open failed: errno=13 (Permission denied)
+
+=== Probe /dev/dri/card0 ===
+open failed: errno=13 (Permission denied)

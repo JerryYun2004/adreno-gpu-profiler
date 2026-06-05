@@ -1,0 +1,3 @@
+05-29 11:42:13.908 17729 17729 D colorx  : VulkanExtImpl Init
+05-29 11:42:13.908 17729 17729 I vk_probe: type=1400 audit(0.0:802): avc:  denied  { call } for  scontext=u:r:shell:s0 tcontext=u:r:vendor_hal_qspmhal_default:s0 tclass=binder permissive=1
+05-29 11:42:13.922 17729 17729 I AdrenoVK-0: Driver Path             : /vendor/lib64/hw/vulkan.adreno.so

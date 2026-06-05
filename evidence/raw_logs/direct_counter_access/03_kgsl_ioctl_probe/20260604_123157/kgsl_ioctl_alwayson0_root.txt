@@ -1,0 +1,19 @@
+=== KGSL ioctl perf-counter probe ===
+device: /dev/kgsl-3d0
+selected group: 0x1b (ALWAYSON)
+selected countable: 0 / 0x0
+sizeof(struct kgsl_perfcounter_get)=20
+sizeof(struct kgsl_perfcounter_query)=32
+sizeof(struct kgsl_perfcounter_read_group)=16
+sizeof(struct kgsl_perfcounter_read)=24
+
+[OK]   open(/dev/kgsl-3d0) fd=3
+
+=== QUERY group=0x1b (ALWAYSON) ===
+[OK]   PERFCOUNTER_QUERY max_counters=1 count=256
+       first active/free countables: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+
+=== GET/READ/PUT group=0x1b (ALWAYSON), countable=0 / 0x0 ===
+[OK]   PERFCOUNTER_GET offset=0x8e7 offset_hi=0x8e8
+[FAIL] PERFCOUNTER_READ ret=-1 errno=1 (Operation not permitted)
+[OK]   PERFCOUNTER_PUT

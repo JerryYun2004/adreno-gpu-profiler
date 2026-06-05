@@ -1,0 +1,10 @@
+# Manifest: turnip_logcat
+
+Generated: Fri  5 Jun 2026 14:47:43 BST
+Source: /Users/jerryyun/adreno_turnip
+Folder: evidence/raw_logs/turnip_logcat
+
+## Files
+4.0K  3936afbd5feb5c8c2c5eba35771cc300c6f476904ac93cff0c0f0b9849e42823  evidence/raw_logs/turnip_logcat/turnip_bindmount_logcat.txt
+4.0K  a956869c56117d281049740e96c372d3e68df5d108a744c644c229af6b4d4371  evidence/raw_logs/turnip_logcat/turnip_logcat.txt
+4.0K  23291ad53b71ac97094c258195fefe78d94bfa3c421de6af6774be13667bdeee  evidence/raw_logs/turnip_logcat/turnip_logcat_latest.txt

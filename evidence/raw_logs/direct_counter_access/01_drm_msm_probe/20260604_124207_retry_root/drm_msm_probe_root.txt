@@ -1,0 +1,14 @@
+
+=== Probe /dev/dri/renderD128 ===
+DRM_IOCTL_VERSION ok
+  name: msm_drm
+  date: 20130625
+  desc: MSM Snapdragon DRM
+DRM_CAP_SYNCOBJ: 0
+
+=== Probe /dev/dri/card0 ===
+DRM_IOCTL_VERSION ok
+  name: msm_drm
+  date: 20130625
+  desc: MSM Snapdragon DRM
+DRM_CAP_SYNCOBJ: 0

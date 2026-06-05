@@ -1,0 +1,18 @@
+06-04 10:42:47.644  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:00:00.106 31339 31400 D ParsingPackageUtilsExtImpl: adjustXmlValidator skip verify tag packageName: com.google.android.gms.policy_tflite_gpu_dynamite_dynamite , bootCompleted: true
+06-04 11:01:06.323  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:06.335  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:06.362  3503  3625 I WindowManager: Window{d0759a9 u0 OnScreenFingerprintIcon} state from READY_TO_SHOW to HAS_DRAWN; reason: performShowLocked
+06-04 11:01:06.366  3503  3625 I WindowManager: Window{23180c7 u0 OnScreenFingerprintPressedIcon} state from READY_TO_SHOW to HAS_DRAWN; reason: performShowLocked
+06-04 11:01:06.564  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:07.075  3503  3622 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:07.089  3503  3622 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:11.480  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:11.484  3503  3622 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:11.485  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:13.012  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:13.018  3503  3622 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:13.249  3503  3622 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 12:32:20.419  2237  2237 I OplusPerfCount: The num of client composition of  in last 5473857 ms is: 30
+06-04 12:32:20.419  2237  2237 I OplusPerfCount: The num of blur fliter in last 5473857 ms is: 30
+06-04 12:32:20.419  2237  2237 I OplusPerfCount: The layer number in last 5473857ms is: 4 layer, 6 time, 5 layer, 33 time, 

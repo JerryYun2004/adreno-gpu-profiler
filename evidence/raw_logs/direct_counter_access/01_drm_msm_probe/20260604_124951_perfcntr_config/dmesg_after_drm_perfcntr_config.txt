@@ -1,0 +1,2 @@
+[308252.616950] type=1400 audit(1780573327.336:561): avc:  denied  { read write } for  comm="drm_msm_probe" name="renderD128" dev="tmpfs" ino=1678 scontext=u:r:shell:s0 tcontext=u:object_r:graphics_device:s0 tclass=chr_file permissive=0
+[308252.617001] type=1400 audit(1780573327.336:562): avc:  denied  { read write } for  comm="drm_msm_probe" name="card0" dev="tmpfs" ino=1679 scontext=u:r:shell:s0 tcontext=u:object_r:graphics_device:s0 tclass=chr_file permissive=0

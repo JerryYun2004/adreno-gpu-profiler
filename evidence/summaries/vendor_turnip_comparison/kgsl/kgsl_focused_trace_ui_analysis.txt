@@ -1,0 +1,105 @@
+=== Event counts ===
+adreno_cmdbatch_queued         1819
+adreno_cmdbatch_done           1359
+adreno_cmdbatch_ready          1347
+adreno_cmdbatch_submitted      1347
+adreno_cmdbatch_retired        1336
+kgsl_pwrstats                  257
+kgsl_mem_free                  154
+kgsl_mem_map                   152
+kgsl_mem_alloc                 113
+kgsl_buslevel                  61
+kgsl_pwr_set_state             20
+kgsl_pwr_request_state         14
+kgsl_gpubusy                   3
+kgsl_context_create            2
+kgsl_pwrlevel                  2
+gpu_frequency                  2
+kgsl_mem_sync_cache            1
+
+=== Command batch timing ===
+submitted batches: 1347
+retired batches:   1336
+avg active:         19954.8 ticks
+max active:         106326 ticks
+avg queue_to_start: 21320.2 ticks
+max queue_to_start: 243191 ticks
+avg gmu_latency:    263.9 ticks
+max gmu_latency:    944 ticks
+
+Top 10 longest active command batches:
+ctx=8 ts=41663 active=106326 queue_to_start=686 gmu_latency=317
+ctx=8 ts=41340 active=74658 queue_to_start=120784 gmu_latency=335
+ctx=8 ts=41337 active=74199 queue_to_start=106903 gmu_latency=257
+ctx=8 ts=41343 active=74181 queue_to_start=147492 gmu_latency=220
+ctx=8 ts=41334 active=73683 queue_to_start=124838 gmu_latency=256
+ctx=8 ts=41635 active=73511 queue_to_start=7592 gmu_latency=260
+ctx=8 ts=41544 active=73477 queue_to_start=676 gmu_latency=274
+ctx=8 ts=41331 active=73458 queue_to_start=129703 gmu_latency=256
+ctx=8 ts=41654 active=73453 queue_to_start=810 gmu_latency=265
+ctx=8 ts=41328 active=73340 queue_to_start=55097 gmu_latency=245
+
+=== Per-context retired batch counts ===
+ctx=8: 548
+ctx=3: 423
+ctx=18: 363
+ctx=20: 2
+
+=== kgsl_pwrstats ===
+samples:            257
+avg busy_pct:       59.80%
+max busy_pct:       99.76%
+avg ram_wait_pct:   22.19%
+max ram_wait_pct:   82.37%
+avg context_count:  2.99
+max context_count:  4
+
+=== kgsl_gpubusy ===
+samples:            3
+avg busy_pct:       57.36%
+max busy_pct:       61.84%
+
+=== Frequency / power ===
+freq samples:       [342000, 222000]
+min freq:           222000 kHz
+max freq:           342000 kHz
+pwrlevel changes:   2
+buslevel samples:   61
+avg avg_bw:         2777.1
+max avg_bw:         6050
+
+=== Memory by usage ===
+egl_image                     522.12 MiB
+surface                        69.09 MiB
+VK/others( 38)                 38.05 MiB
+gl                              5.08 MiB
+any(0)                          1.98 MiB
+texture                         1.88 MiB
+command                         1.05 MiB
+VK/others( 32)                  0.12 MiB
+
+=== Memory event counts ===
+free  egl_image                 137
+map   egl_image                 134
+alloc command                   42
+alloc gl                        29
+alloc any(0)                    22
+map   surface                   18
+free  surface                   15
+alloc VK/others( 38)            10
+alloc texture                   8
+alloc VK/others( 32)            2
+free  VK/others( 38)            2
+
+=== Memory bytes by event type and usage ===
+free  egl_image                     280.46 MiB
+map   egl_image                     241.66 MiB
+map   surface                        35.23 MiB
+alloc VK/others( 38)                 34.04 MiB
+free  surface                        33.86 MiB
+alloc gl                              5.08 MiB
+free  VK/others( 38)                  4.02 MiB
+alloc any(0)                          1.98 MiB
+alloc texture                         1.88 MiB
+alloc command                         1.05 MiB
+alloc VK/others( 32)                  0.12 MiB

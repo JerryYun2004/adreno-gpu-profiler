@@ -1,0 +1,46 @@
+=== MSM DRM perf-counter config ioctl probe ===
+Target counter: group SP, countable 2 = A8XX_PERF_SP_ALU_WORKING_CYCLES
+DRM_MSM_PERFCNTR_CONFIG = 0xe
+MSM_PERFCNTR_STREAM     = 0x1
+MSM_PERFCNTR_UPDATE     = 0x2
+
+
+=== DRM PERFCNTR_CONFIG probe ===
+node:  /dev/dri/renderD128
+flags: 0x2
+[OK] open fd=3
+sizeof(struct drm_msm_perfcntr_group)  = 32
+sizeof(struct drm_msm_perfcntr_config) = 32
+group_name=SP nr_countables=1 countable[0]=2
+period=1000000 ns bufsz_shift=12 group_stride=32
+[FAIL] DRM_IOCTL_MSM_PERFCNTR_CONFIG ret=-1 errno=22 (Invalid argument)
+
+=== DRM PERFCNTR_CONFIG probe ===
+node:  /dev/dri/renderD128
+flags: 0x3
+[OK] open fd=3
+sizeof(struct drm_msm_perfcntr_group)  = 32
+sizeof(struct drm_msm_perfcntr_config) = 32
+group_name=SP nr_countables=1 countable[0]=2
+period=1000000 ns bufsz_shift=12 group_stride=32
+[FAIL] DRM_IOCTL_MSM_PERFCNTR_CONFIG ret=-1 errno=22 (Invalid argument)
+
+=== DRM PERFCNTR_CONFIG probe ===
+node:  /dev/dri/card0
+flags: 0x2
+[OK] open fd=3
+sizeof(struct drm_msm_perfcntr_group)  = 32
+sizeof(struct drm_msm_perfcntr_config) = 32
+group_name=SP nr_countables=1 countable[0]=2
+period=1000000 ns bufsz_shift=12 group_stride=32
+[FAIL] DRM_IOCTL_MSM_PERFCNTR_CONFIG ret=-1 errno=22 (Invalid argument)
+
+=== DRM PERFCNTR_CONFIG probe ===
+node:  /dev/dri/card0
+flags: 0x3
+[OK] open fd=3
+sizeof(struct drm_msm_perfcntr_group)  = 32
+sizeof(struct drm_msm_perfcntr_config) = 32
+group_name=SP nr_countables=1 countable[0]=2
+period=1000000 ns bufsz_shift=12 group_stride=32
+[FAIL] DRM_IOCTL_MSM_PERFCNTR_CONFIG ret=-1 errno=22 (Invalid argument)

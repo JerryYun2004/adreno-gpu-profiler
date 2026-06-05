@@ -1,0 +1,5 @@
+=== KGSL open probe ===
+target: /dev/kgsl-3d0
+open O_RDWR success: fd=3
+open O_RDONLY success: fd=3
+open O_WRONLY success: fd=3

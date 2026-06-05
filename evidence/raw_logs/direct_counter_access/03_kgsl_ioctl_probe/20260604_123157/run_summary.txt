@@ -1,0 +1,4 @@
+=== shell: ALWAYSON 0 ===
+=== shell: SP 2 / A8XX_PERF_SP_ALU_WORKING_CYCLES ===
+=== root: ALWAYSON 0 ===
+=== root: SP 2 / A8XX_PERF_SP_ALU_WORKING_CYCLES ===

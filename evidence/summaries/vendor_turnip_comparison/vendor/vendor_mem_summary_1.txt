@@ -1,0 +1,107 @@
+=== Event counts ===
+kgsl_mem_alloc                 26
+kgsl_mem_free                  26
+kgsl_pwrstats                  7
+kgsl_buslevel                  5
+adreno_cmdbatch_queued         4
+adreno_cmdbatch_ready          4
+adreno_cmdbatch_submitted      4
+adreno_cmdbatch_done           4
+adreno_cmdbatch_retired        4
+kgsl_pwr_request_state         3
+kgsl_pwr_set_state             2
+kgsl_mem_map                   2
+kgsl_context_create            1
+kgsl_pwrlevel                  1
+gpu_frequency                  1
+kgsl_gpubusy                   1
+
+=== Command batch timing ===
+submitted batches: 4
+retired batches:   4
+avg active:         1569684.5 ticks
+max active:         6277115 ticks
+avg queue_to_start: 6875.2 ticks
+max queue_to_start: 11683 ticks
+avg gmu_latency:    186.5 ticks
+max gmu_latency:    323 ticks
+
+Top 10 longest active command batches:
+ctx=15 ts=2 active=6277115 queue_to_start=105 gmu_latency=147
+ctx=8 ts=42642 active=1046 queue_to_start=11683 gmu_latency=160
+ctx=8 ts=42643 active=400 queue_to_start=10333 gmu_latency=116
+ctx=15 ts=1 active=177 queue_to_start=5380 gmu_latency=323
+
+=== Per-context retired batch counts ===
+ctx=15: 2
+ctx=8: 2
+
+=== kgsl_pwrstats ===
+samples:            7
+avg busy_pct:       85.63%
+max busy_pct:       99.98%
+avg ram_wait_pct:   34.10%
+max ram_wait_pct:   61.66%
+avg context_count:  1.86
+max context_count:  2
+
+=== kgsl_gpubusy ===
+samples:            1
+avg busy_pct:       94.56%
+max busy_pct:       94.56%
+
+=== Frequency / power ===
+freq samples:       [1100000]
+min freq:           1100000 kHz
+max freq:           1100000 kHz
+pwrlevel changes:   1
+buslevel samples:   5
+avg avg_bw:         1546.6
+max avg_bw:         4649
+
+=== Memory by usage ===
+VK/others( 38)                  4.00 MiB
+surface                         1.13 MiB
+egl_image                       1.13 MiB
+VK/others( 32)                  0.75 MiB
+any(0)                          0.38 MiB
+VK/others( 37)                  0.31 MiB
+VK/others( 35)                  0.07 MiB
+VK/others( 51)                  0.02 MiB
+VK/others( 36)                  0.01 MiB
+
+=== Memory event counts ===
+alloc VK/others( 35)            9
+free  VK/others( 35)            9
+alloc VK/others( 32)            6
+free  VK/others( 32)            6
+alloc VK/others( 37)            5
+free  VK/others( 37)            5
+alloc VK/others( 38)            2
+alloc VK/others( 51)            2
+free  VK/others( 38)            2
+free  VK/others( 51)            2
+alloc VK/others( 36)            1
+alloc any(0)                    1
+free  VK/others( 36)            1
+free  any(0)                    1
+map   egl_image                 1
+map   surface                   1
+
+=== Memory bytes by event type and usage ===
+alloc VK/others( 38)                  2.00 MiB
+free  VK/others( 38)                  2.00 MiB
+map   surface                         1.13 MiB
+map   egl_image                       1.13 MiB
+alloc VK/others( 32)                  0.38 MiB
+free  VK/others( 32)                  0.38 MiB
+alloc any(0)                          0.19 MiB
+free  any(0)                          0.19 MiB
+alloc VK/others( 37)                  0.16 MiB
+free  VK/others( 37)                  0.16 MiB
+alloc VK/others( 35)                  0.04 MiB
+free  VK/others( 35)                  0.04 MiB
+alloc VK/others( 51)                  0.01 MiB
+free  VK/others( 51)                  0.01 MiB
+alloc VK/others( 36)                  0.00 MiB
+free  VK/others( 36)                  0.00 MiB

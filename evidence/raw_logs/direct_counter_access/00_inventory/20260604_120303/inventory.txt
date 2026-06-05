@@ -1,0 +1,98 @@
+=== Host ===
+Thu  4 Jun 2026 12:03:03 BST
+Darwin dhcp-90-176.inf.ed.ac.uk 24.6.0 Darwin Kernel Version 24.6.0: Wed Nov  5 21:33:58 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T6000 arm64
+/Users/jerryyun/adreno_turnip
+
+=== ADB device ===
+List of devices attached
+10.126.62.44:5555      device product:CPH2653EEA model:CPH2653 device:OP5D55L1 transport_id:9
+
+
+=== Android identity ===
+uid=2000(shell) gid=2000(shell) groups=2000(shell),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid),3012(readtracefs) context=u:r:shell:s0
+Linux localhost 6.6.30-android15-8-gb5f0c188ea2a-ab12656338-4k #1 SMP PREEMPT Thu Nov 14 14:27:29 UTC 2024 aarch64 Toybox
+CPH2653
+qcom
+sun
+OnePlus/CPH2653EEA/OP5D55L1:15/AP3A.240617.008/V.R4T3.1c0bb8c-55cf-20dbb:user/release-keys
+15
+35
+
+=== GPU device nodes ===
+
+crw-rw-rw- 1 root   graphics 226,   0 1970-05-16 10:43 /dev/dri/card0
+crw-rw-rw- 1 root   graphics 226, 128 1970-05-16 10:43 /dev/dri/renderD128
+crw-rw-rw- 1 system system   457,   0 1970-05-16 10:43 /dev/kgsl-3d0
+
+/dev/dri:
+total 0
+crw-rw-rw- 1 root graphics 226,   0 1970-05-16 10:43 card0
+crw-rw-rw- 1 root graphics 226, 128 1970-05-16 10:43 renderD128
+
+=== SELinux labels for GPU device nodes ===
+
+crw-rw-rw- 1 root   graphics u:object_r:graphics_device:s0  226,   0 1970-05-16 10:43 /dev/dri/card0
+crw-rw-rw- 1 root   graphics u:object_r:graphics_device:s0  226, 128 1970-05-16 10:43 /dev/dri/renderD128
+crw-rw-rw- 1 system system   u:object_r:gpu_device:s0       457,   0 1970-05-16 10:43 /dev/kgsl-3d0
+
+/dev/dri:
+total 0
+crw-rw-rw- 1 root graphics u:object_r:graphics_device:s0  226,   0 1970-05-16 10:43 card0
+crw-rw-rw- 1 root graphics u:object_r:graphics_device:s0  226, 128 1970-05-16 10:43 renderD128
+
+=== KGSL sysfs ===
+
+=== KGSL readable sysfs values ===
+
+=== DRM sysfs ===
+/sys/class/drm/card0
+/sys/class/drm/card0-DP-1
+/sys/class/drm/card0-DSI-1
+/sys/class/drm/card0-Virtual-1
+/sys/class/drm/card0-Virtual-2
+/sys/class/drm/card0-sde-crtc-0
+/sys/class/drm/card0-sde-crtc-1
+/sys/class/drm/card0-sde-crtc-2
+/sys/class/drm/card0-sde-crtc-3
+/sys/class/drm/card0-sde-crtc-4
+/sys/class/drm/card0-sde-crtc-5
+/sys/class/drm/card0-sde-crtc-6
+/sys/class/drm/card0-sde-crtc-7
+/sys/class/drm/renderD128
+/sys/class/drm/sde-conn-2-DSI-1
+
+=== DRM driver/module hints ===
+--- /sys/class/drm/card0
+/sys/bus/platform/drivers/msm_drm
+--- /sys/class/drm/card0-DP-1
+/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/driver
+--- /sys/class/drm/card0-DSI-1
+/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/driver
+--- /sys/class/drm/card0-Virtual-1
+/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/driver
+--- /sys/class/drm/card0-Virtual-2
+/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/driver
+--- /sys/class/drm/card0-sde-crtc-0
+/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/driver
+--- /sys/class/drm/card0-sde-crtc-1
+/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/driver
+--- /sys/class/drm/card0-sde-crtc-2
+/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/driver
+--- /sys/class/drm/card0-sde-crtc-3
+/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/driver
+--- /sys/class/drm/card0-sde-crtc-4
+/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/driver
+--- /sys/class/drm/card0-sde-crtc-5
+/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/driver
+--- /sys/class/drm/card0-sde-crtc-6
+/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/driver
+--- /sys/class/drm/card0-sde-crtc-7
+/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/driver
+--- /sys/class/drm/renderD128
+/sys/bus/platform/drivers/msm_drm
+
+=== Debugfs/tracing availability ===
+tracefs on /sys/kernel/tracing type tracefs (rw,seclabel,relatime,gid=3012)
+lrw-r--r-- 1 root root        17 2025-01-15 15:46 /d -> /sys/kernel/debug
+dr-xr-xr-x 2 root root         0 2026-06-03 02:34 /sys/kernel/debug
+drwxr-xr-x 6 root readtracefs  0 1970-01-01 01:00 /sys/kernel/tracing

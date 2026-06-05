@@ -1,0 +1,8 @@
+
+crw-rw-rw- 1 root graphics u:object_r:graphics_device:s0  226,   0 1970-05-16 10:43 /dev/dri/card0
+crw-rw-rw- 1 root graphics u:object_r:graphics_device:s0  226, 128 1970-05-16 10:43 /dev/dri/renderD128
+
+/dev/dri:
+total 0
+crw-rw-rw- 1 root graphics u:object_r:graphics_device:s0  226,   0 1970-05-16 10:43 card0
+crw-rw-rw- 1 root graphics u:object_r:graphics_device:s0  226, 128 1970-05-16 10:43 renderD128

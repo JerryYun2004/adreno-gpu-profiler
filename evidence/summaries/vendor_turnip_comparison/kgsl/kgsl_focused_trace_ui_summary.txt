@@ -1,0 +1,17 @@
+2087 adreno_cmdbatch_queued
+1481 adreno_cmdbatch_submitted
+1481 adreno_cmdbatch_retired
+1481 adreno_cmdbatch_ready
+1481 adreno_cmdbatch_done
+ 263 kgsl_pwrstats
+ 164 kgsl_mem_map
+ 158 kgsl_mem_free
+ 139 kgsl_mem_alloc
+  65 kgsl_buslevel
+  20 kgsl_pwr_set_state
+  15 kgsl_pwr_request_state
+   3 kgsl_pwrlevel
+   3 kgsl_gpubusy
+   3 gpu_frequency
+   2 kgsl_context_create
+   1 kgsl_mem_sync_cache

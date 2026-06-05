@@ -1,0 +1,1 @@
+/system/bin/sh: /data/local/tmp/jerry_work/kgsl_open_probe: inaccessible or not found

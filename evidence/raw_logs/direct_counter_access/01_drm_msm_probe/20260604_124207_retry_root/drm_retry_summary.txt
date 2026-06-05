@@ -1,0 +1,7 @@
+=== shell identity ===
+=== root identity ===
+=== DRM node permissions ===
+=== DRM sysfs driver links ===
+=== shell DRM probe ===
+=== root DRM probe ===
+=== logcat AVC / DRM / GPU after probe ===

@@ -1,0 +1,66 @@
+
+=== Steady-state summary ===
+Note: ALU uses trials 2-5; memory uses trials 3-5 to reduce warm-up/setup effects.
+
+driver   workload trials      batches   avg_active   max_active    busy%  ram_wait%   freq_kHz
+----------------------------------------------------------------------------------------------
+vendor   alu      2,3,4,5        2.00    1555063.8    3109948.2    65.61       3.37    1100000
+turnip   alu      2,3,4,5        1.00    4126297.8    4126297.8    99.43      38.63    1100000
+vendor   mem      3,4,5          2.00    3141993.5    6283810.3    80.79      44.68    1100000
+turnip   mem      3,4,5          1.00   11975270.0   11975270.0    88.54      72.58    1100000
+
+=== Detailed means ± stdev ===
+
+[vendor / alu] trials 2,3,4,5
+  submitted_batches            2.00 ± 0.00
+  retired_batches              2.00 ± 0.00
+  avg_active_ticks             1555063.75 ± 368.19
+  max_active_ticks             3109948.25 ± 734.53
+  avg_queue_to_start_ticks     2767.88 ± 41.61
+  avg_gmu_latency_ticks        255.75 ± 1.66
+  avg_busy_pct                 65.61 ± 3.44
+  avg_ram_wait_pct             3.37 ± 1.79
+  max_ram_wait_pct             9.67 ± 4.50
+  max_freq_khz                 1100000.00 ± 0.00
+
+[turnip / alu] trials 2,3,4,5
+  submitted_batches            1.00 ± 0.00
+  retired_batches              1.00 ± 0.00
+  avg_active_ticks             4126297.75 ± 23449.73
+  max_active_ticks             4126297.75 ± 23449.73
+  avg_queue_to_start_ticks     5318.75 ± 63.63
+  avg_gmu_latency_ticks        212.50 ± 2.38
+  avg_busy_pct                 99.43 ± 0.65
+  avg_ram_wait_pct             38.63 ± 3.48
+  max_ram_wait_pct             61.09 ± 1.21
+  max_freq_khz                 1100000.00 ± 0.00
+
+[vendor / mem] trials 3,4,5
+  submitted_batches            2.00 ± 0.00
+  retired_batches              2.00 ± 0.00
+  avg_active_ticks             3141993.50 ± 382.22
+  max_active_ticks             6283810.33 ± 763.42
+  avg_queue_to_start_ticks     2780.67 ± 23.54
+  avg_gmu_latency_ticks        257.50 ± 3.00
+  avg_busy_pct                 80.79 ± 2.09
+  avg_ram_wait_pct             44.68 ± 0.13
+  max_ram_wait_pct             68.28 ± 0.65
+  max_freq_khz                 1100000.00 ± 0.00
+
+[turnip / mem] trials 3,4,5
+  submitted_batches            1.00 ± 0.00
+  retired_batches              1.00 ± 0.00
+  avg_active_ticks             11975270.00 ± 21468.05
+  max_active_ticks             11975270.00 ± 21468.05
+  avg_queue_to_start_ticks     5337.67 ± 50.16
+  avg_gmu_latency_ticks        221.00 ± 14.80
+  avg_busy_pct                 88.54 ± 0.23
+  avg_ram_wait_pct             72.58 ± 3.96
+  max_ram_wait_pct             96.64 ± 0.48
+  max_freq_khz                 1100000.00 ± 0.00
+
+=== Useful ratios ===
+vendor   mem/alu: avg_active 2.02x, ram_wait 13.27x
+turnip   mem/alu: avg_active 2.90x, ram_wait 1.88x
+turnip/vendor memory: avg_active 3.81x, ram_wait 1.62x
+turnip/vendor alu: avg_active 2.65x, ram_wait 11.47x

@@ -1,0 +1,1 @@
+crw-rw-rw- 1 system system u:object_r:gpu_device:s0  457,   0 1970-05-16 10:43 /dev/kgsl-3d0

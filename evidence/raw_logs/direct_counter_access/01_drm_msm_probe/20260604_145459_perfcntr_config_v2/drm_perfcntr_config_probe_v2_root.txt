@@ -1,0 +1,29 @@
+=== DRM MSM PERFCNTR_CONFIG probe v2 ===
+
+=== PERFCNTR_CONFIG test ===
+node=/dev/dri/renderD128 group=SP countable=2 flags=0x1 nr_countables=1
+sample_size=24 bufsz=48 bufsz_shift=6 group_stride=32
+[FAIL] ioctl ret=-1 errno=22 (Invalid argument)
+
+=== PERFCNTR_CONFIG test ===
+node=/dev/dri/renderD128 group=ALWAYSON countable=0 flags=0x1 nr_countables=1
+sample_size=24 bufsz=48 bufsz_shift=6 group_stride=32
+[FAIL] ioctl ret=-1 errno=22 (Invalid argument)
+
+=== PERFCNTR_CONFIG empty config ===
+node=/dev/dri/renderD128 flags=0 nr_groups=0
+[FAIL] empty ioctl ret=-1 errno=22 (Invalid argument)
+
+=== PERFCNTR_CONFIG test ===
+node=/dev/dri/card0 group=SP countable=2 flags=0x1 nr_countables=1
+sample_size=24 bufsz=48 bufsz_shift=6 group_stride=32
+[FAIL] ioctl ret=-1 errno=22 (Invalid argument)
+
+=== PERFCNTR_CONFIG test ===
+node=/dev/dri/card0 group=ALWAYSON countable=0 flags=0x1 nr_countables=1
+sample_size=24 bufsz=48 bufsz_shift=6 group_stride=32
+[FAIL] ioctl ret=-1 errno=22 (Invalid argument)
+
+=== PERFCNTR_CONFIG empty config ===
+node=/dev/dri/card0 flags=0 nr_groups=0
+[FAIL] empty ioctl ret=-1 errno=22 (Invalid argument)

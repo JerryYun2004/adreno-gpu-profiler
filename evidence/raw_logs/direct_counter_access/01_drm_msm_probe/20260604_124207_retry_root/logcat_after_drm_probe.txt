@@ -1,0 +1,3 @@
+06-04 11:00:00.106 31339 31400 D ParsingPackageUtilsExtImpl: adjustXmlValidator skip verify tag packageName: com.google.android.gms.policy_tflite_gpu_dynamite_dynamite , bootCompleted: true
+06-04 12:42:07.336 21089 21089 W drm_msm_probe: type=1400 audit(0.0:561): avc:  denied  { read write } for  name="renderD128" dev="tmpfs" ino=1678 scontext=u:r:shell:s0 tcontext=u:object_r:graphics_device:s0 tclass=chr_file permissive=0
+06-04 12:42:07.336 21089 21089 W drm_msm_probe: type=1400 audit(0.0:562): avc:  denied  { read write } for  name="card0" dev="tmpfs" ino=1679 scontext=u:r:shell:s0 tcontext=u:object_r:graphics_device:s0 tclass=chr_file permissive=0

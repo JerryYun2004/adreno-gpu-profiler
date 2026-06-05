@@ -1,0 +1,3 @@
+05-29 11:59:55.720 17961 17961 D colorx  : VulkanExtImpl Init
+05-29 11:59:55.723 17961 17961 W MESA    : Gralloc doesn't support lock_ycbcr (video buffers won't be supported)
+05-29 11:59:55.723 17961 17961 I MESA    : Using fallback gralloc implementation

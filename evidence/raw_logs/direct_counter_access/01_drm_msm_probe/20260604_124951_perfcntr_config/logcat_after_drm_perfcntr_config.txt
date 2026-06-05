@@ -1,0 +1,22 @@
+06-04 10:42:47.644  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:00:00.106 31339 31400 D ParsingPackageUtilsExtImpl: adjustXmlValidator skip verify tag packageName: com.google.android.gms.policy_tflite_gpu_dynamite_dynamite , bootCompleted: true
+06-04 11:01:06.323  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:06.335  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:06.362  3503  3625 I WindowManager: Window{d0759a9 u0 OnScreenFingerprintIcon} state from READY_TO_SHOW to HAS_DRAWN; reason: performShowLocked
+06-04 11:01:06.366  3503  3625 I WindowManager: Window{23180c7 u0 OnScreenFingerprintPressedIcon} state from READY_TO_SHOW to HAS_DRAWN; reason: performShowLocked
+06-04 11:01:06.564  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:07.075  3503  3622 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:07.089  3503  3622 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:11.480  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:11.484  3503  3622 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:11.485  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:13.012  3503  3625 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:13.018  3503  3622 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 11:01:13.249  3503  3622 D DisplayManagerService: performTraversalInternal pendingTraversal
+06-04 12:40:43.536  1023  5102 I CallLogProvider: performBackgroundTask for unhide PhoneAccountHandles
+06-04 12:40:43.537  1023  5109 I CallLogProvider: performBackgroundTask for unhide PhoneAccountHandles
+06-04 12:40:43.538  1023  5110 I CallLogProvider: performBackgroundTask for unhide PhoneAccountHandles
+06-04 12:42:07.258  2237  2237 I OplusPerfCount: The layer number in last 586830ms is: 4 layer, 40 time, 
+06-04 12:42:07.336 21089 21089 W drm_msm_probe: type=1400 audit(0.0:561): avc:  denied  { read write } for  name="renderD128" dev="tmpfs" ino=1678 scontext=u:r:shell:s0 tcontext=u:object_r:graphics_device:s0 tclass=chr_file permissive=0
+06-04 12:42:07.336 21089 21089 W drm_msm_probe: type=1400 audit(0.0:562): avc:  denied  { read write } for  name="card0" dev="tmpfs" ino=1679 scontext=u:r:shell:s0 tcontext=u:object_r:graphics_device:s0 tclass=chr_file permissive=0
+06-04 12:49:51.275  2237  2237 I OplusPerfCount: The layer number in last 464009ms is: 4 layer, 25 time, 

@@ -1,0 +1,38 @@
+#version 450
+
+layout(local_size_x = 256) in;
+
+layout(set = 0, binding = 0, std430) readonly buffer InBuf {
+    uint in_data[];
+};
+
+layout(set = 0, binding = 1, std430) writeonly buffer OutBuf {
+    uint out_data[];
+};
+
+layout(push_constant) uniform PushConstants {
+    uint n;
+    uint iters;
+} pc;
+
+void main() {
+    uint idx = gl_GlobalInvocationID.x;
+
+    if (idx >= pc.n) {
+        return;
+    }
+
+    uint x = in_data[idx] ^ (idx * 747796405u + 2891336453u);
+
+    for (uint i = 0u; i < pc.iters; i++) {
+        x = x * 1664525u + 1013904223u;
+        x ^= x >> 16u;
+        x *= 2246822519u;
+        x ^= x >> 13u;
+        x *= 3266489917u;
+        x ^= x >> 16u;
+        x += i ^ idx;
+    }
+
+    out_data[idx] = x;
+}

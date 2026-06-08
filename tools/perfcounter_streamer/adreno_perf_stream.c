@@ -18,6 +18,8 @@
 #include <time.h>
 #include <unistd.h>
 
+#define CSV_TEMP_PATH "/data/local/tmp/adreno_perf_stream_last.csv"
+
 #define ADRENO_IOC_TYPE 0x09
 #define MAX_SELECTED 64
 #define MAX_MATCHES 32
@@ -296,19 +298,25 @@ static double now_seconds(void) {
 
 static void print_usage(const char *argv0) {
   printf("Usage:\n");
-  printf("  %s [options] <counter query> [counter query ...]\n\n", argv0);
+  printf("  %s -i <seconds> <counter query> [counter query ...]\n", argv0);
+  printf("  %s -l <counter search term>\n\n", argv0);
+  printf("Counter query can be an exact counter name, a short name, or a fuzzy search term.\n");
+  printf("Multiple counters can be selected in one command. Values printed on the terminal\n");
+  printf("are deltas since the previous sample. elapsed_s is not printed on the terminal,\n");
+  printf("but it is always saved in the CSV log.\n\n");
   printf("Options:\n");
-  printf("  -i <seconds>       Sampling interval. If omitted, the program prompts.\n");
+  printf("  -i <seconds>       Sampling interval, for example 1 or 0.5. If omitted, prompts.\n");
   printf("  -d <device>        KGSL device path. Default: %s\n", DEFAULT_DEVICE);
   printf("  -n                 Non-interactive: choose best fuzzy match automatically.\n");
-  printf("  -l <query>         List matching counters and exit.\n");
-  printf("  --csv              Print CSV rows instead of name=value rows.\n");
+  printf("  -l <query>         List matching counters and exit. Use this to test fuzzy search.\n");
+  printf("  --csv              Print CSV rows on terminal. Default terminal output is name=value.\n");
   printf("  -h                 Show this help.\n\n");
   printf("Examples:\n");
-  printf("  %s -i 0.5 busy alu fs_instruction\n", argv0);
   printf("  %s -i 1 SP_BUSY_CYCLES SP_ALU_WORKING_CYCLES\n", argv0);
-  printf("  %s --csv -i 0.2 SP_BUSY_CYCLES SP_ALU_WORKING_CYCLES\n", argv0);
-  printf("  %s -l ram_wait\n", argv0);
+  printf("  %s -i 0.5 busy alu instruction\n", argv0);
+  printf("  %s -n -i 0.2 busy alu\n", argv0);
+  printf("  %s -l alu\n", argv0);
+  printf("  %s -l fs_instruction\n", argv0);
 }
 
 static void cleanup_active(int fd, size_t active_n, const size_t *active_idx) {
@@ -316,6 +324,104 @@ static void cleanup_active(int fd, size_t active_n, const size_t *active_idx) {
   printf("\n[cleanup] releasing %zu active counters\n", active_n);
   for (size_t i = 0; i < active_n; ++i) deactivate_counter(fd, &k_counters[active_idx[i]]);
 }
+
+static void csv_write_header(FILE *f, size_t active_n, const size_t *active_idx) {
+  if (!f) return;
+  fprintf(f, "elapsed_s");
+  for (size_t i = 0; i < active_n; ++i) fprintf(f, ",%s", k_counters[active_idx[i]].short_name);
+  fprintf(f, "\n");
+  fflush(f);
+}
+
+static void csv_write_row(FILE *f, double elapsed_s, size_t active_n,
+                          const size_t *active_idx,
+                          const unsigned long long *diffv) {
+  if (!f) return;
+  fprintf(f, "%.6f", elapsed_s);
+  for (size_t i = 0; i < active_n; ++i) {
+    (void)active_idx;
+    fprintf(f, ",%llu", diffv[i]);
+  }
+  fprintf(f, "\n");
+  fflush(f);
+}
+
+static void strip_newline(char *s) {
+  if (!s) return;
+  size_t n = strlen(s);
+  while (n > 0 && (s[n - 1] == '\n' || s[n - 1] == '\r')) s[--n] = '\0';
+}
+
+static int copy_file(const char *src, const char *dst) {
+  FILE *in = fopen(src, "rb");
+  if (!in) {
+    fprintf(stderr, "[csv] failed to open temp CSV '%s': %s\n", src, strerror(errno));
+    return -1;
+  }
+  FILE *out = fopen(dst, "wb");
+  if (!out) {
+    fprintf(stderr, "[csv] failed to open destination '%s': %s\n", dst, strerror(errno));
+    fclose(in);
+    return -1;
+  }
+  char buf[8192];
+  size_t n;
+  int ok = 0;
+  while ((n = fread(buf, 1, sizeof(buf), in)) > 0) {
+    if (fwrite(buf, 1, n, out) != n) {
+      fprintf(stderr, "[csv] write failed for '%s': %s\n", dst, strerror(errno));
+      ok = -1;
+      break;
+    }
+  }
+  if (ferror(in)) {
+    fprintf(stderr, "[csv] read failed for '%s'\n", src);
+    ok = -1;
+  }
+  fclose(in);
+  if (fclose(out) != 0) {
+    fprintf(stderr, "[csv] close failed for '%s': %s\n", dst, strerror(errno));
+    ok = -1;
+  }
+  return ok;
+}
+
+static void prompt_save_csv(const char *tmp_path) {
+  printf("\n[csv] samples were recorded to temporary file: %s\n", tmp_path);
+  if (!isatty(STDIN_FILENO)) {
+    printf("[csv] stdin is not interactive, so the file was kept at the temporary path.\n");
+    return;
+  }
+
+  printf("Save CSV file? [Y/n]: ");
+  fflush(stdout);
+  char answer[32];
+  if (!fgets(answer, sizeof(answer), stdin)) {
+    printf("\n[csv] no answer received; keeping temporary CSV at %s\n", tmp_path);
+    return;
+  }
+  strip_newline(answer);
+  if (answer[0] == 'n' || answer[0] == 'N') {
+    if (unlink(tmp_path) == 0) printf("[csv] discarded temporary CSV.\n");
+    else fprintf(stderr, "[csv] failed to delete temporary CSV '%s': %s\n", tmp_path, strerror(errno));
+    return;
+  }
+
+  printf("Destination path on the phone [default: %s]: ", tmp_path);
+  fflush(stdout);
+  char dst[512];
+  if (!fgets(dst, sizeof(dst), stdin)) {
+    printf("\n[csv] no destination received; keeping CSV at %s\n", tmp_path);
+    return;
+  }
+  strip_newline(dst);
+  if (dst[0] == '\0' || strcmp(dst, tmp_path) == 0) {
+    printf("[csv] saved at %s\n", tmp_path);
+    return;
+  }
+  if (copy_file(tmp_path, dst) == 0) printf("[csv] saved copy at %s\n", dst);
+}
+
 
 int main(int argc, char **argv) {
   const char *dev = DEFAULT_DEVICE;
@@ -358,7 +464,10 @@ int main(int argc, char **argv) {
   size_t selected_n = 0;
 
   if (optind >= argc) {
-    printf("Enter counter search terms, comma-separated: ");
+    print_usage(argv[0]);
+    printf("\nEnter counter search terms, comma-separated\n");
+    printf("Example input: busy, alu, fs_instruction\n");
+    printf("> ");
     fflush(stdout);
     char line[512];
     if (!fgets(line, sizeof(line), stdin)) return 2;
@@ -411,14 +520,23 @@ int main(int argc, char **argv) {
   struct adreno_perfcounter_read_group *groups = calloc(active_n, sizeof(*groups));
   unsigned long long *oldv = calloc(active_n, sizeof(*oldv));
   unsigned long long *newv = calloc(active_n, sizeof(*newv));
-  if (!groups || !oldv || !newv) {
+  unsigned long long *diffv = calloc(active_n, sizeof(*diffv));
+  if (!groups || !oldv || !newv || !diffv) {
     fprintf(stderr, "allocation failed\n");
     cleanup_active(fd, active_n, active_idx);
     free(groups);
     free(oldv);
     free(newv);
+    free(diffv);
     close(fd);
     return 1;
+  }
+
+  FILE *csv_file = fopen(CSV_TEMP_PATH, "w");
+  if (!csv_file) {
+    fprintf(stderr, "[csv] failed to open temporary CSV '%s': %s\n", CSV_TEMP_PATH, strerror(errno));
+  } else {
+    csv_write_header(csv_file, active_n, active_idx);
   }
   for (size_t i = 0; i < active_n; ++i) {
     const struct counter_desc *c = &k_counters[active_idx[i]];
@@ -431,6 +549,7 @@ int main(int argc, char **argv) {
   }
 
   printf("\n[stream] Press Ctrl+C to stop. Values are deltas since previous sample.\n");
+  if (csv_file) printf("[csv] logging elapsed_s and counter deltas to %s\n", CSV_TEMP_PATH);
   if (csv) {
     printf("elapsed_s");
     for (size_t i = 0; i < active_n; ++i) printf(",%s", k_counters[active_idx[i]].short_name);
@@ -447,25 +566,33 @@ int main(int argc, char **argv) {
 
     if (csv) {
       printf("%.6f", t);
-    } else {
-      printf("elapsed_s=%.6f", t);
     }
 
     for (size_t i = 0; i < active_n; ++i) {
       newv[i] = groups[i].value;
-      unsigned long long diff = newv[i] - oldv[i];  // unsigned wrap is intentional
-      if (csv) printf(",%llu", diff);
-      else printf(", %s=%llu", k_counters[active_idx[i]].short_name, diff);
+      diffv[i] = newv[i] - oldv[i];  // unsigned wrap is intentional
+      if (csv) {
+        printf(",%llu", diffv[i]);
+      } else {
+        if (i > 0) printf(", ");
+        printf("%s=%llu", k_counters[active_idx[i]].short_name, diffv[i]);
+      }
       oldv[i] = newv[i];
     }
+    csv_write_row(csv_file, t, active_n, active_idx, diffv);
     printf("\n");
     fflush(stdout);
   }
 
   cleanup_active(fd, active_n, active_idx);
+  if (csv_file) {
+    fclose(csv_file);
+    prompt_save_csv(CSV_TEMP_PATH);
+  }
   free(groups);
   free(oldv);
   free(newv);
+  free(diffv);
   close(fd);
   return 0;
 }

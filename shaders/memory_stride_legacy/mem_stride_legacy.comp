@@ -1,0 +1,39 @@
+#version 450
+
+layout(local_size_x = 256) in;
+
+#ifndef STRIDE
+#define STRIDE 1u
+#endif
+
+layout(set = 0, binding = 0) buffer InBuf {
+    uint in_data[];
+};
+
+layout(set = 0, binding = 1) buffer OutBuf {
+    uint out_data[];
+};
+
+layout(push_constant) uniform PushConsts {
+    uint n;
+    uint iters;
+} pc;
+
+void main() {
+    uint gid = gl_GlobalInvocationID.x;
+
+    if (gid >= pc.n) {
+        return;
+    }
+
+    uint mask = pc.n - 1u;
+    uint idx = gid & mask;
+    uint acc = 0u;
+
+    for (uint i = 0u; i < pc.iters; i++) {
+        idx = (idx + STRIDE) & mask;
+        acc += in_data[idx];
+    }
+
+    out_data[gid] = acc;
+}

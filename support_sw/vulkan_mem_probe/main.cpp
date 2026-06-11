@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
 #include <fstream>
 #include <vector>
 
@@ -169,16 +170,27 @@ int main(int argc, char** argv) {
     uint32_t n = 1u << 18;
     uint32_t alu_iters = 512;
     uint32_t dispatch_repeats = 64;
+    bool verify = true;
 
     if (argc >= 2) spv_path = argv[1];
     if (argc >= 3) n = static_cast<uint32_t>(std::strtoul(argv[2], nullptr, 0));
     if (argc >= 4) alu_iters = static_cast<uint32_t>(std::strtoul(argv[3], nullptr, 0));
     if (argc >= 5) dispatch_repeats = static_cast<uint32_t>(std::strtoul(argv[4], nullptr, 0));
 
+    for (int i = 1; i < argc; i++) {
+        if (std::strcmp(argv[i], "--no-verify") == 0) {
+            verify = false;
+        } else if (std::strcmp(argv[i], "--help") == 0 ||
+                   std::strcmp(argv[i], "-h") == 0) {
+            std::printf("Usage: %s [spv_path] [elements] [iters] [dispatch_repeats] [--no-verify]\n", argv[0]);
+            return 0;
+        }
+    }
+
     std::printf("[vk_mem_probe] Starting Vulkan compute workload\n");
     std::printf("[vk_mem_probe] SPIR-V: %s\n", spv_path);
-    std::printf("[vk_mem_probe] elements=%u alu_iters=%u dispatch_repeats=%u\n",
-                n, alu_iters, dispatch_repeats);
+    std::printf("[vk_mem_probe] elements=%u alu_iters=%u dispatch_repeats=%u verify=%s\n",
+                n, alu_iters, dispatch_repeats, verify ? "yes" : "no");
 
     std::vector<uint32_t> spv = read_spv(spv_path);
 
@@ -480,25 +492,30 @@ int main(int argc, char** argv) {
     VK_CHECK(vkQueueWaitIdle(queue));
     std::printf("[vk_mem_probe] Workload complete.\n");
 
-    std::printf("[vk_mem_probe] Verifying output...\n");
-
     bool ok = true;
-    uint32_t check_count = std::min<uint32_t>(n, 1024);
 
-    for (uint32_t i = 0; i < check_count; i++) {
-        uint32_t expected = cpu_mem_reference(in, i, n, alu_iters);
-        if (out[i] != expected) {
-            std::printf("[vk_mem_probe] MISMATCH at %u: got=0x%08x expected=0x%08x\n",
-                        i, out[i], expected);
-            ok = false;
-            break;
+    if (verify) {
+        std::printf("[vk_mem_probe] Verifying output...\n");
+
+        uint32_t check_count = std::min<uint32_t>(n, 1024);
+
+        for (uint32_t i = 0; i < check_count; i++) {
+            uint32_t expected = cpu_mem_reference(in, i, n, alu_iters);
+            if (out[i] != expected) {
+                std::printf("[vk_mem_probe] MISMATCH at %u: got=0x%08x expected=0x%08x\n",
+                            i, out[i], expected);
+                ok = false;
+                break;
+            }
         }
-    }
 
-    if (ok) {
-        std::printf("[vk_mem_probe] Verification PASSED for first %u elements.\n", check_count);
+        if (ok) {
+            std::printf("[vk_mem_probe] Verification PASSED for first %u elements.\n", check_count);
+        } else {
+            std::printf("[vk_mem_probe] Verification FAILED.\n");
+        }
     } else {
-        std::printf("[vk_mem_probe] Verification FAILED.\n");
+        std::printf("[vk_mem_probe] Skipping verification (--no-verify).\n");
     }
 
     vkDestroyCommandPool(device, cmd_pool, nullptr);

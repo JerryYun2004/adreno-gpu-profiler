@@ -15,10 +15,10 @@ The program is intended to run on the phone through `adb shell`, usually with `s
 
 ## Build on host
 
-From the directory containing these files:
+From the repository root:
 
 ```bash
-cd adreno_perf_streamer
+cd tools/perfcounter_streamer
 
 # macOS default, matching your current setup style
 make NDK=$HOME/android-ndk-r27d API=35 HOST_TAG=darwin-x86_64
@@ -74,7 +74,7 @@ Use non-interactive fuzzy matching, choosing the best match automatically:
 adb shell su -c '/data/local/tmp/adreno_perf_stream -n -i 0.2 alu busy'
 ```
 
-CSV mode for logs:
+Print CSV rows on the terminal:
 
 ```bash
 adb shell su -c '/data/local/tmp/adreno_perf_stream --csv -i 0.2 SP_BUSY_CYCLES SP_ALU_WORKING_CYCLES' \
@@ -83,15 +83,40 @@ adb shell su -c '/data/local/tmp/adreno_perf_stream --csv -i 0.2 SP_BUSY_CYCLES 
 
 ## Output style
 
-Default output is `name=value`, similar to the proven `adreno_perfcntr_test.c` style:
+Default terminal output is `name=value`, similar to the proven `adreno_perfcntr_test.c` style. The terminal output does not print `elapsed_s=`:
 
 ```text
-elapsed_s=1.000421, SP_BUSY_CYCLES=123456, SP_ALU_WORKING_CYCLES=98765, SP_FS_INSTRUCTIONS=321
+SP_BUSY_CYCLES=123456, SP_ALU_WORKING_CYCLES=98765, SP_FS_INSTRUCTIONS=321
 ```
 
 Values are deltas since the previous sample, not cumulative raw counter values.
 
-Press `Ctrl+C` to stop. The program catches `SIGINT`/`SIGTERM` and calls `ADRENO_IOCTL_PERFCOUNTER_PUT` for every active counter before exiting.
+The program also writes every sample to a temporary CSV file on the phone:
+
+```text
+/data/local/tmp/adreno_perf_stream_last.csv
+```
+
+The CSV includes `elapsed_s` as the first column, followed by the selected counter deltas.
+
+Press `Ctrl+C` to stop. The program catches `SIGINT`/`SIGTERM`, calls `ADRENO_IOCTL_PERFCOUNTER_PUT` for every active counter, then asks whether to keep the CSV and where to save it. The destination path is a path on the phone, not on the host Mac. To copy it back to the Mac, use `adb pull`.
+
+Example:
+
+```bash
+adb shell
+su
+/data/local/tmp/adreno_perf_stream -i 1 SP_BUSY_CYCLES SP_ALU_WORKING_CYCLES
+# Press Ctrl+C, answer Y, then choose for example:
+# /data/local/tmp/sp_alu_test.csv
+exit
+exit
+adb pull /data/local/tmp/sp_alu_test.csv ./sp_alu_test.csv
+```
+
+If stdin is not interactive, the program keeps the temporary CSV at `/data/local/tmp/adreno_perf_stream_last.csv`.
+
+With `--csv`, the terminal stream itself is CSV-formatted and includes an `elapsed_s` column so it can still be redirected on the host.
 
 ## Important notes
 
@@ -107,38 +132,6 @@ python3 generate_a8xx_perf_table.py a8xx_perfcntrs.xml > a8xx_perf_table.inc
 make clean && make NDK=$HOME/android-ndk-r27d API=35 HOST_TAG=darwin-x86_64
 ```
 
-
-## Patch update: terminal output and CSV logging
-
-With the CSV/logging patch applied, the default terminal stream no longer prints `elapsed_s`.
-The terminal output keeps the compact `name=value` style, for example:
-
-```text
-SP_BUSY_CYCLES=12345, SP_ALU_WORKING_CYCLES=6789
-```
-
-At the same time, every sample is written to a temporary CSV file on the phone:
-
-```text
-/data/local/tmp/adreno_perf_stream_last.csv
-```
-
-The CSV includes `elapsed_s` as the first column, followed by the selected counter deltas.
-When you stop the profiler with `Ctrl+C`, the program asks whether to keep the CSV and where to save it.
-The destination path is a path on the phone, not on the host Mac. To copy it back to the Mac, use `adb pull`.
-
-Example:
-
-```bash
-adb shell
-su
-/data/local/tmp/adreno_perf_stream -i 1 SP_BUSY_CYCLES SP_ALU_WORKING_CYCLES
-# Press Ctrl+C, answer Y, then choose for example:
-# /data/local/tmp/sp_alu_test.csv
-exit
-exit
-adb pull /data/local/tmp/sp_alu_test.csv ./sp_alu_test.csv
-```
 
 ## How to test fuzzy counter input
 

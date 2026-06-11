@@ -1,0 +1,36 @@
+#version 450
+
+layout(local_size_x = 256) in;
+
+layout(set = 0, binding = 0) buffer InBuf {
+    uint in_data[];
+};
+
+layout(set = 0, binding = 1) buffer OutBuf {
+    uint out_data[];
+};
+
+layout(push_constant) uniform PushConsts {
+    uint n;
+    uint iters;
+    uint stride;
+    uint mask;
+} pc;
+
+void main() {
+    uint gid = gl_GlobalInvocationID.x;
+
+    if (gid >= pc.n) {
+        return;
+    }
+
+    uint idx = gid & pc.mask;
+    uint acc = 0u;
+
+    for (uint i = 0u; i < pc.iters; i++) {
+        idx = (idx + pc.stride) & pc.mask;
+        acc += in_data[idx];
+    }
+
+    out_data[gid] = acc;
+}

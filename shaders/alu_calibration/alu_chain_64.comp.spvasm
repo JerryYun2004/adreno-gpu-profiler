@@ -1,0 +1,384 @@
+; SPIR-V
+; Version: 1.0
+; Generator: Khronos Glslang Reference Front End; 11
+; Bound: 280
+; Schema: 0
+               OpCapability Shader
+          %1 = OpExtInstImport "GLSL.std.450"
+               OpMemoryModel Logical GLSL450
+               OpEntryPoint GLCompute %main "main" %gl_GlobalInvocationID
+               OpExecutionMode %main LocalSize 256 1 1
+               OpSource GLSL 450
+               OpName %main "main"
+               OpName %gid "gid"
+               OpName %gl_GlobalInvocationID "gl_GlobalInvocationID"
+               OpName %x "x"
+               OpName %InputBuffer "InputBuffer"
+               OpMemberName %InputBuffer 0 "in_data"
+               OpName %_ ""
+               OpName %OutputBuffer "OutputBuffer"
+               OpMemberName %OutputBuffer 0 "out_data"
+               OpName %__0 ""
+               OpDecorate %gl_GlobalInvocationID BuiltIn GlobalInvocationId
+               OpDecorate %_runtimearr_uint ArrayStride 4
+               OpDecorate %InputBuffer BufferBlock
+               OpMemberDecorate %InputBuffer 0 NonWritable
+               OpMemberDecorate %InputBuffer 0 Offset 0
+               OpDecorate %_ NonWritable
+               OpDecorate %_ Binding 0
+               OpDecorate %_ DescriptorSet 0
+               OpDecorate %_runtimearr_uint_0 ArrayStride 4
+               OpDecorate %OutputBuffer BufferBlock
+               OpMemberDecorate %OutputBuffer 0 NonReadable
+               OpMemberDecorate %OutputBuffer 0 Offset 0
+               OpDecorate %__0 NonReadable
+               OpDecorate %__0 Binding 1
+               OpDecorate %__0 DescriptorSet 0
+               OpDecorate %gl_WorkGroupSize BuiltIn WorkgroupSize
+       %void = OpTypeVoid
+          %3 = OpTypeFunction %void
+       %uint = OpTypeInt 32 0
+%_ptr_Function_uint = OpTypePointer Function %uint
+     %v3uint = OpTypeVector %uint 3
+%_ptr_Input_v3uint = OpTypePointer Input %v3uint
+%gl_GlobalInvocationID = OpVariable %_ptr_Input_v3uint Input
+     %uint_0 = OpConstant %uint 0
+%_ptr_Input_uint = OpTypePointer Input %uint
+%_runtimearr_uint = OpTypeRuntimeArray %uint
+%InputBuffer = OpTypeStruct %_runtimearr_uint
+%_ptr_Uniform_InputBuffer = OpTypePointer Uniform %InputBuffer
+          %_ = OpVariable %_ptr_Uniform_InputBuffer Uniform
+        %int = OpTypeInt 32 1
+      %int_0 = OpConstant %int 0
+%_ptr_Uniform_uint = OpTypePointer Uniform %uint
+%uint_2654435769 = OpConstant %uint 2654435769
+     %int_13 = OpConstant %int 13
+     %int_17 = OpConstant %int 17
+      %int_5 = OpConstant %int 5
+%uint_2246822507 = OpConstant %uint 2246822507
+%uint_3266489909 = OpConstant %uint 3266489909
+%uint_668265263 = OpConstant %uint 668265263
+%uint_374761393 = OpConstant %uint 374761393
+%uint_3550635116 = OpConstant %uint 3550635116
+%uint_4251993797 = OpConstant %uint 4251993797
+%uint_3042594569 = OpConstant %uint 3042594569
+%uint_608135816 = OpConstant %uint 608135816
+%uint_2242054355 = OpConstant %uint 2242054355
+%uint_320440878 = OpConstant %uint 320440878
+%uint_57701188 = OpConstant %uint 57701188
+%uint_2752067618 = OpConstant %uint 2752067618
+%uint_698298832 = OpConstant %uint 698298832
+%uint_137296536 = OpConstant %uint 137296536
+%uint_3964562569 = OpConstant %uint 3964562569
+%_runtimearr_uint_0 = OpTypeRuntimeArray %uint
+%OutputBuffer = OpTypeStruct %_runtimearr_uint_0
+%_ptr_Uniform_OutputBuffer = OpTypePointer Uniform %OutputBuffer
+        %__0 = OpVariable %_ptr_Uniform_OutputBuffer Uniform
+   %uint_256 = OpConstant %uint 256
+     %uint_1 = OpConstant %uint 1
+%gl_WorkGroupSize = OpConstantComposite %v3uint %uint_256 %uint_1 %uint_1
+       %main = OpFunction %void None %3
+          %5 = OpLabel
+        %gid = OpVariable %_ptr_Function_uint Function
+          %x = OpVariable %_ptr_Function_uint Function
+         %14 = OpAccessChain %_ptr_Input_uint %gl_GlobalInvocationID %uint_0
+         %15 = OpLoad %uint %14
+               OpStore %gid %15
+         %23 = OpLoad %uint %gid
+         %25 = OpAccessChain %_ptr_Uniform_uint %_ %int_0 %23
+         %26 = OpLoad %uint %25
+               OpStore %x %26
+         %27 = OpLoad %uint %x
+         %29 = OpIAdd %uint %27 %uint_2654435769
+               OpStore %x %29
+         %30 = OpLoad %uint %x
+         %31 = OpLoad %uint %x
+         %33 = OpShiftLeftLogical %uint %31 %int_13
+         %34 = OpBitwiseXor %uint %30 %33
+               OpStore %x %34
+         %35 = OpLoad %uint %x
+         %36 = OpLoad %uint %x
+         %38 = OpShiftRightLogical %uint %36 %int_17
+         %39 = OpIAdd %uint %35 %38
+               OpStore %x %39
+         %40 = OpLoad %uint %x
+         %41 = OpLoad %uint %x
+         %43 = OpShiftLeftLogical %uint %41 %int_5
+         %44 = OpBitwiseXor %uint %40 %43
+               OpStore %x %44
+         %45 = OpLoad %uint %x
+         %47 = OpIAdd %uint %45 %uint_2246822507
+               OpStore %x %47
+         %48 = OpLoad %uint %x
+         %49 = OpLoad %uint %x
+         %50 = OpShiftLeftLogical %uint %49 %int_13
+         %51 = OpBitwiseXor %uint %48 %50
+               OpStore %x %51
+         %52 = OpLoad %uint %x
+         %53 = OpLoad %uint %x
+         %54 = OpShiftRightLogical %uint %53 %int_17
+         %55 = OpIAdd %uint %52 %54
+               OpStore %x %55
+         %56 = OpLoad %uint %x
+         %57 = OpLoad %uint %x
+         %58 = OpShiftLeftLogical %uint %57 %int_5
+         %59 = OpBitwiseXor %uint %56 %58
+               OpStore %x %59
+         %60 = OpLoad %uint %x
+         %62 = OpIAdd %uint %60 %uint_3266489909
+               OpStore %x %62
+         %63 = OpLoad %uint %x
+         %64 = OpLoad %uint %x
+         %65 = OpShiftLeftLogical %uint %64 %int_13
+         %66 = OpBitwiseXor %uint %63 %65
+               OpStore %x %66
+         %67 = OpLoad %uint %x
+         %68 = OpLoad %uint %x
+         %69 = OpShiftRightLogical %uint %68 %int_17
+         %70 = OpIAdd %uint %67 %69
+               OpStore %x %70
+         %71 = OpLoad %uint %x
+         %72 = OpLoad %uint %x
+         %73 = OpShiftLeftLogical %uint %72 %int_5
+         %74 = OpBitwiseXor %uint %71 %73
+               OpStore %x %74
+         %75 = OpLoad %uint %x
+         %77 = OpIAdd %uint %75 %uint_668265263
+               OpStore %x %77
+         %78 = OpLoad %uint %x
+         %79 = OpLoad %uint %x
+         %80 = OpShiftLeftLogical %uint %79 %int_13
+         %81 = OpBitwiseXor %uint %78 %80
+               OpStore %x %81
+         %82 = OpLoad %uint %x
+         %83 = OpLoad %uint %x
+         %84 = OpShiftRightLogical %uint %83 %int_17
+         %85 = OpIAdd %uint %82 %84
+               OpStore %x %85
+         %86 = OpLoad %uint %x
+         %87 = OpLoad %uint %x
+         %88 = OpShiftLeftLogical %uint %87 %int_5
+         %89 = OpBitwiseXor %uint %86 %88
+               OpStore %x %89
+         %90 = OpLoad %uint %x
+         %92 = OpIAdd %uint %90 %uint_374761393
+               OpStore %x %92
+         %93 = OpLoad %uint %x
+         %94 = OpLoad %uint %x
+         %95 = OpShiftLeftLogical %uint %94 %int_13
+         %96 = OpBitwiseXor %uint %93 %95
+               OpStore %x %96
+         %97 = OpLoad %uint %x
+         %98 = OpLoad %uint %x
+         %99 = OpShiftRightLogical %uint %98 %int_17
+        %100 = OpIAdd %uint %97 %99
+               OpStore %x %100
+        %101 = OpLoad %uint %x
+        %102 = OpLoad %uint %x
+        %103 = OpShiftLeftLogical %uint %102 %int_5
+        %104 = OpBitwiseXor %uint %101 %103
+               OpStore %x %104
+        %105 = OpLoad %uint %x
+        %107 = OpIAdd %uint %105 %uint_3550635116
+               OpStore %x %107
+        %108 = OpLoad %uint %x
+        %109 = OpLoad %uint %x
+        %110 = OpShiftLeftLogical %uint %109 %int_13
+        %111 = OpBitwiseXor %uint %108 %110
+               OpStore %x %111
+        %112 = OpLoad %uint %x
+        %113 = OpLoad %uint %x
+        %114 = OpShiftRightLogical %uint %113 %int_17
+        %115 = OpIAdd %uint %112 %114
+               OpStore %x %115
+        %116 = OpLoad %uint %x
+        %117 = OpLoad %uint %x
+        %118 = OpShiftLeftLogical %uint %117 %int_5
+        %119 = OpBitwiseXor %uint %116 %118
+               OpStore %x %119
+        %120 = OpLoad %uint %x
+        %122 = OpIAdd %uint %120 %uint_4251993797
+               OpStore %x %122
+        %123 = OpLoad %uint %x
+        %124 = OpLoad %uint %x
+        %125 = OpShiftLeftLogical %uint %124 %int_13
+        %126 = OpBitwiseXor %uint %123 %125
+               OpStore %x %126
+        %127 = OpLoad %uint %x
+        %128 = OpLoad %uint %x
+        %129 = OpShiftRightLogical %uint %128 %int_17
+        %130 = OpIAdd %uint %127 %129
+               OpStore %x %130
+        %131 = OpLoad %uint %x
+        %132 = OpLoad %uint %x
+        %133 = OpShiftLeftLogical %uint %132 %int_5
+        %134 = OpBitwiseXor %uint %131 %133
+               OpStore %x %134
+        %135 = OpLoad %uint %x
+        %137 = OpIAdd %uint %135 %uint_3042594569
+               OpStore %x %137
+        %138 = OpLoad %uint %x
+        %139 = OpLoad %uint %x
+        %140 = OpShiftLeftLogical %uint %139 %int_13
+        %141 = OpBitwiseXor %uint %138 %140
+               OpStore %x %141
+        %142 = OpLoad %uint %x
+        %143 = OpLoad %uint %x
+        %144 = OpShiftRightLogical %uint %143 %int_17
+        %145 = OpIAdd %uint %142 %144
+               OpStore %x %145
+        %146 = OpLoad %uint %x
+        %147 = OpLoad %uint %x
+        %148 = OpShiftLeftLogical %uint %147 %int_5
+        %149 = OpBitwiseXor %uint %146 %148
+               OpStore %x %149
+        %150 = OpLoad %uint %x
+        %152 = OpIAdd %uint %150 %uint_608135816
+               OpStore %x %152
+        %153 = OpLoad %uint %x
+        %154 = OpLoad %uint %x
+        %155 = OpShiftLeftLogical %uint %154 %int_13
+        %156 = OpBitwiseXor %uint %153 %155
+               OpStore %x %156
+        %157 = OpLoad %uint %x
+        %158 = OpLoad %uint %x
+        %159 = OpShiftRightLogical %uint %158 %int_17
+        %160 = OpIAdd %uint %157 %159
+               OpStore %x %160
+        %161 = OpLoad %uint %x
+        %162 = OpLoad %uint %x
+        %163 = OpShiftLeftLogical %uint %162 %int_5
+        %164 = OpBitwiseXor %uint %161 %163
+               OpStore %x %164
+        %165 = OpLoad %uint %x
+        %167 = OpIAdd %uint %165 %uint_2242054355
+               OpStore %x %167
+        %168 = OpLoad %uint %x
+        %169 = OpLoad %uint %x
+        %170 = OpShiftLeftLogical %uint %169 %int_13
+        %171 = OpBitwiseXor %uint %168 %170
+               OpStore %x %171
+        %172 = OpLoad %uint %x
+        %173 = OpLoad %uint %x
+        %174 = OpShiftRightLogical %uint %173 %int_17
+        %175 = OpIAdd %uint %172 %174
+               OpStore %x %175
+        %176 = OpLoad %uint %x
+        %177 = OpLoad %uint %x
+        %178 = OpShiftLeftLogical %uint %177 %int_5
+        %179 = OpBitwiseXor %uint %176 %178
+               OpStore %x %179
+        %180 = OpLoad %uint %x
+        %182 = OpIAdd %uint %180 %uint_320440878
+               OpStore %x %182
+        %183 = OpLoad %uint %x
+        %184 = OpLoad %uint %x
+        %185 = OpShiftLeftLogical %uint %184 %int_13
+        %186 = OpBitwiseXor %uint %183 %185
+               OpStore %x %186
+        %187 = OpLoad %uint %x
+        %188 = OpLoad %uint %x
+        %189 = OpShiftRightLogical %uint %188 %int_17
+        %190 = OpIAdd %uint %187 %189
+               OpStore %x %190
+        %191 = OpLoad %uint %x
+        %192 = OpLoad %uint %x
+        %193 = OpShiftLeftLogical %uint %192 %int_5
+        %194 = OpBitwiseXor %uint %191 %193
+               OpStore %x %194
+        %195 = OpLoad %uint %x
+        %197 = OpIAdd %uint %195 %uint_57701188
+               OpStore %x %197
+        %198 = OpLoad %uint %x
+        %199 = OpLoad %uint %x
+        %200 = OpShiftLeftLogical %uint %199 %int_13
+        %201 = OpBitwiseXor %uint %198 %200
+               OpStore %x %201
+        %202 = OpLoad %uint %x
+        %203 = OpLoad %uint %x
+        %204 = OpShiftRightLogical %uint %203 %int_17
+        %205 = OpIAdd %uint %202 %204
+               OpStore %x %205
+        %206 = OpLoad %uint %x
+        %207 = OpLoad %uint %x
+        %208 = OpShiftLeftLogical %uint %207 %int_5
+        %209 = OpBitwiseXor %uint %206 %208
+               OpStore %x %209
+        %210 = OpLoad %uint %x
+        %212 = OpIAdd %uint %210 %uint_2752067618
+               OpStore %x %212
+        %213 = OpLoad %uint %x
+        %214 = OpLoad %uint %x
+        %215 = OpShiftLeftLogical %uint %214 %int_13
+        %216 = OpBitwiseXor %uint %213 %215
+               OpStore %x %216
+        %217 = OpLoad %uint %x
+        %218 = OpLoad %uint %x
+        %219 = OpShiftRightLogical %uint %218 %int_17
+        %220 = OpIAdd %uint %217 %219
+               OpStore %x %220
+        %221 = OpLoad %uint %x
+        %222 = OpLoad %uint %x
+        %223 = OpShiftLeftLogical %uint %222 %int_5
+        %224 = OpBitwiseXor %uint %221 %223
+               OpStore %x %224
+        %225 = OpLoad %uint %x
+        %227 = OpIAdd %uint %225 %uint_698298832
+               OpStore %x %227
+        %228 = OpLoad %uint %x
+        %229 = OpLoad %uint %x
+        %230 = OpShiftLeftLogical %uint %229 %int_13
+        %231 = OpBitwiseXor %uint %228 %230
+               OpStore %x %231
+        %232 = OpLoad %uint %x
+        %233 = OpLoad %uint %x
+        %234 = OpShiftRightLogical %uint %233 %int_17
+        %235 = OpIAdd %uint %232 %234
+               OpStore %x %235
+        %236 = OpLoad %uint %x
+        %237 = OpLoad %uint %x
+        %238 = OpShiftLeftLogical %uint %237 %int_5
+        %239 = OpBitwiseXor %uint %236 %238
+               OpStore %x %239
+        %240 = OpLoad %uint %x
+        %242 = OpIAdd %uint %240 %uint_137296536
+               OpStore %x %242
+        %243 = OpLoad %uint %x
+        %244 = OpLoad %uint %x
+        %245 = OpShiftLeftLogical %uint %244 %int_13
+        %246 = OpBitwiseXor %uint %243 %245
+               OpStore %x %246
+        %247 = OpLoad %uint %x
+        %248 = OpLoad %uint %x
+        %249 = OpShiftRightLogical %uint %248 %int_17
+        %250 = OpIAdd %uint %247 %249
+               OpStore %x %250
+        %251 = OpLoad %uint %x
+        %252 = OpLoad %uint %x
+        %253 = OpShiftLeftLogical %uint %252 %int_5
+        %254 = OpBitwiseXor %uint %251 %253
+               OpStore %x %254
+        %255 = OpLoad %uint %x
+        %257 = OpIAdd %uint %255 %uint_3964562569
+               OpStore %x %257
+        %258 = OpLoad %uint %x
+        %259 = OpLoad %uint %x
+        %260 = OpShiftLeftLogical %uint %259 %int_13
+        %261 = OpBitwiseXor %uint %258 %260
+               OpStore %x %261
+        %262 = OpLoad %uint %x
+        %263 = OpLoad %uint %x
+        %264 = OpShiftRightLogical %uint %263 %int_17
+        %265 = OpIAdd %uint %262 %264
+               OpStore %x %265
+        %266 = OpLoad %uint %x
+        %267 = OpLoad %uint %x
+        %268 = OpShiftLeftLogical %uint %267 %int_5
+        %269 = OpBitwiseXor %uint %266 %268
+               OpStore %x %269
+        %274 = OpLoad %uint %gid
+        %275 = OpLoad %uint %x
+        %276 = OpAccessChain %_ptr_Uniform_uint %__0 %int_0 %274
+               OpStore %276 %275
+               OpReturn
+               OpFunctionEnd

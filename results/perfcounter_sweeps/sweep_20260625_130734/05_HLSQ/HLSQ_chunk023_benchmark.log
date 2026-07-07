@@ -1,0 +1,51 @@
+_CYC                   group=0x4 selector=115 reg_low=0x1fc reg_high=0x1fd
+[GET] HLSQ_FS_SP_HCTX_ACTIVE_CYC                   group=0x4 selector=116 reg_low=0x1fa reg_high=0x1fb
+[GET] HLSQ_BV_SP_HCTX_ACTIVE_CYC                   group=0x4 selector=117 reg_low=0x1f8 reg_high=0x1f9
+[GET] HLSQ_VS_SP_CCTX_ACTIVE_CNT                   group=0x4 selector=118 reg_low=0x1f6 reg_high=0x1f7
+[GET] HLSQ_FS_SP_CCTX_ACTIVE_CNT                   group=0x4 selector=119 reg_low=0x1f4 reg_high=0x1f5
+[bench] pid=8476 bursts=3 burst_sleep=0.200000 cmd=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/05_HLSQ/HLSQ_chunk020_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/05_HLSQ/HLSQ_chunk020.csv (6 active counters, 1307 rows)
+[chunk] HLSQ chunk 21 starting at enum-filtered index 120
+[GET] HLSQ_BV_SP_CCTX_ACTIVE_CNT                   group=0x4 selector=120 reg_low=0x1fe reg_high=0x1ff
+[GET] HLSQ_VS_SP_SCTX_ACTIVE_CNT                   group=0x4 selector=121 reg_low=0x1fc reg_high=0x1fd
+[GET] HLSQ_FS_SP_SCTX_ACTIVE_CNT                   group=0x4 selector=122 reg_low=0x1fa reg_high=0x1fb
+[GET] HLSQ_BV_SP_SCTX_ACTIVE_CNT                   group=0x4 selector=123 reg_low=0x1f8 reg_high=0x1f9
+[GET] HLSQ_VS_SP_CTX_ALIVE_CYCLE                   group=0x4 selector=124 reg_low=0x1f6 reg_high=0x1f7
+[GET] HLSQ_FS_SP_CTX_ALIVE_CYCLE                   group=0x4 selector=125 reg_low=0x1f4 reg_high=0x1f5
+[bench] pid=8480 bursts=3 burst_sleep=0.200000 cmd=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/05_HLSQ/HLSQ_chunk021_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/05_HLSQ/HLSQ_chunk021.csv (6 active counters, 1303 rows)
+[chunk] HLSQ chunk 22 starting at enum-filtered index 126
+[GET] HLSQ_BV_SP_CTX_ALIVE_CYCLE                   group=0x4 selector=126 reg_low=0x1fe reg_high=0x1ff
+[GET] HLSQ_STPROC_WAVE_NUM_FS                      group=0x4 selector=127 reg_low=0x1fc reg_high=0x1fd
+[GET] HLSQ_STPROC_WAVE_NUM_VS                      group=0x4 selector=128 reg_low=0x1fa reg_high=0x1fb
+[GET] HLSQ_STPROC_WAVE_NUM_BV                      group=0x4 selector=129 reg_low=0x1f8 reg_high=0x1f9
+[GET] HLSQ_STPROC_WAVE_NUM_LPAC                    group=0x4 selector=130 reg_low=0x1f6 reg_high=0x1f7
+[GET] HLSQ_VS_SP_CCTX_NUM                          group=0x4 selector=131 reg_low=0x1f4 reg_high=0x1f5
+[bench] pid=8484 bursts=3 burst_sleep=0.200000 cmd=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/05_HLSQ/HLSQ_chunk022_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/05_HLSQ/HLSQ_chunk022.csv (6 active counters, 1310 rows)
+[chunk] HLSQ chunk 23 starting at enum-filtered index 132
+[GET] HLSQ_FS_SP_CCTX_NUM                          group=0x4 selector=132 reg_low=0x1fe reg_high=0x1ff
+[GET] HLSQ_BV_SP_CCTX_NUM                          group=0x4 selector=133 reg_low=0x1fc reg_high=0x1fd
+[GET] HLSQ_VS_SP_SCTX_NUM                          group=0x4 selector=134 reg_low=0x1fa reg_high=0x1fb
+[GET] HLSQ_FS_SP_SCTX_NUM                          group=0x4 selector=135 reg_low=0x1f8 reg_high=0x1f9
+[GET] HLSQ_BV_SP_SCTX_NUM                          group=0x4 selector=136 reg_low=0x1f6 reg_high=0x1f7
+[bench] command: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] bursts: 3
+[bench] burst_sleep_s: 0.200000
+[bench] burst 1/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.6417,1277412273.355,8.000,10.219,PASS,"Adreno (TM) 830"
+[bench] burst 1/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 2/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.2547,1671452982.734,8.000,13.372,PASS,"Adreno (TM) 830"
+[bench] burst 2/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 3/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.3205,1588187227.417,8.000,12.705,PASS,"Adreno (TM) 830"
+[bench] burst 3/3 exit_status=0

@@ -1,0 +1,29 @@
+/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/11_SP/SP_chunk009.csv (13 active counters, 1275 rows)
+
+[group] RB: total selected counters=56, physical slots=8
+[chunk] RB chunk 1 starting at enum-filtered index 0
+[GET] RB_NEVER_COUNT                               group=0xb selector=0 reg_low=0x2ac reg_high=0x2ad
+[GET] RB_BUSY_CYCLES                               group=0xb selector=1 reg_low=0x2aa reg_high=0x2ab
+[GET] RB_STALL_CYCLES_HLSQ                         group=0xb selector=2 reg_low=0x2a8 reg_high=0x2a9
+[GET] RB_STALL_CYCLES_FIFO0_FULL                   group=0xb selector=3 reg_low=0x2a6 reg_high=0x2a7
+[GET] RB_STALL_CYCLES_FIFO1_FULL                   group=0xb selector=4 reg_low=0x2a4 reg_high=0x2a5
+[GET] RB_STALL_CYCLES_FIFO2_FULL                   group=0xb selector=5 reg_low=0x2a2 reg_high=0x2a3
+[GET] RB_STARVE_CYCLES_SP                          group=0xb selector=6 reg_low=0x2a0 reg_high=0x2a1
+[GET] RB_STARVE_CYCLES_LRZ_TILE                    group=0xb selector=7 reg_low=0x29e reg_high=0x29f
+[bench] command: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] bursts: 3
+[bench] burst_sleep_s: 0.200000
+[bench] burst 1/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.3011,1611837422.969,8.000,12.895,PASS,"Adreno (TM) 830"
+[bench] burst 1/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 2/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,3.2707,641198137.266,8.000,5.130,PASS,"Adreno (TM) 830"
+[bench] burst 2/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 3/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,3.1040,675626689.347,8.000,5.405,PASS,"Adreno (TM) 830"
+[bench] burst 3/3 exit_status=0

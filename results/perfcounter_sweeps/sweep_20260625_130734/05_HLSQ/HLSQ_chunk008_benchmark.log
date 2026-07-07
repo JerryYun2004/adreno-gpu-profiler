@@ -1,0 +1,40 @@
+4 selector=33 reg_low=0x1f8 reg_high=0x1f9
+[GET] HLSQ_FS_WAIT_VS_S2W                          group=0x4 selector=34 reg_low=0x1f6 reg_high=0x1f7
+[GET] HLSQ_LPAC_WAIT_VS_S2W                        group=0x4 selector=35 reg_low=0x1f4 reg_high=0x1f5
+[bench] pid=8415 bursts=3 burst_sleep=0.200000 cmd=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/05_HLSQ/HLSQ_chunk006_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/05_HLSQ/HLSQ_chunk006.csv (6 active counters, 1307 rows)
+[chunk] HLSQ chunk 7 starting at enum-filtered index 36
+[GET] HLSQ_BV_WAIT_FS_S2W                          group=0x4 selector=36 reg_low=0x1fe reg_high=0x1ff
+[GET] HLSQ_RESERVED_37                             group=0x4 selector=37 reg_low=0x1fc reg_high=0x1fd
+[GET] HLSQ_FS_WAIT_SAME_VS_S2W                     group=0x4 selector=38 reg_low=0x1fa reg_high=0x1fb
+[GET] HLSQ_FS_STARVING_SP                          group=0x4 selector=39 reg_low=0x1f8 reg_high=0x1f9
+[GET] HLSQ_VS_DATA_WAIT_PROGRAMMING                group=0x4 selector=40 reg_low=0x1f6 reg_high=0x1f7
+[GET] HLSQ_BV_DATA_WAIT_PROGRAMMING                group=0x4 selector=41 reg_low=0x1f4 reg_high=0x1f5
+[bench] pid=8419 bursts=3 burst_sleep=0.200000 cmd=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/05_HLSQ/HLSQ_chunk007_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/05_HLSQ/HLSQ_chunk007.csv (6 active counters, 1306 rows)
+[chunk] HLSQ chunk 8 starting at enum-filtered index 42
+[GET] HLSQ_STPROC_WAVE_CONTEXTS_VS                 group=0x4 selector=42 reg_low=0x1fe reg_high=0x1ff
+[GET] HLSQ_STPROC_WAVE_CONTEXT_CYCLES_VS           group=0x4 selector=43 reg_low=0x1fc reg_high=0x1fd
+[GET] HLSQ_STPROC_WAVE_CONTEXTS_FS                 group=0x4 selector=44 reg_low=0x1fa reg_high=0x1fb
+[GET] HLSQ_STPROC_WAVE_CONTEXT_CYCLES_FS           group=0x4 selector=45 reg_low=0x1f8 reg_high=0x1f9
+[GET] HLSQ_STPROC_WAVE_CONTEXTS_BV                 group=0x4 selector=46 reg_low=0x1f6 reg_high=0x1f7
+[GET] HLSQ_STPROC_WAVE_CONTEXT_CYCLES_BV           group=0x4 selector=47 reg_low=0x1f4 reg_high=0x1f5
+[bench] command: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] bursts: 3
+[bench] burst_sleep_s: 0.200000
+[bench] burst 1/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.4357,1460687915.338,8.000,11.686,PASS,"Adreno (TM) 830"
+[bench] burst 1/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 2/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.3394,1565769108.726,8.000,12.526,PASS,"Adreno (TM) 830"
+[bench] burst 2/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 3/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.3257,1581884697.487,8.000,12.655,PASS,"Adreno (TM) 830"
+[bench] burst 3/3 exit_status=0

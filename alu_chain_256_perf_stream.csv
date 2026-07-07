@@ -1,0 +1,78 @@
+
+[selected] 2 counters, interval 0.005 s
+       SP         gid=0x0a selector=1    SP_BUSY_CYCLES                               (A8XX_PERF_SP_BUSY_CYCLES)
+       SP         gid=0x0a selector=2    SP_ALU_WORKING_CYCLES                        (A8XX_PERF_SP_ALU_WORKING_CYCLES)
+[GET] SP_BUSY_CYCLES                               group=0xa selector=1 reg_low=0x29c reg_high=0x29d
+[GET] SP_ALU_WORKING_CYCLES                        group=0xa selector=2 reg_low=0x29a reg_high=0x29b
+
+[stream] Press Ctrl+C to stop. Values are deltas since previous sample.
+[csv] logging elapsed_s and counter deltas to /data/local/tmp/adreno_perf_stream_last.csv
+elapsed_s,SP_BUSY_CYCLES,SP_ALU_WORKING_CYCLES
+0.005272,0,0
+0.010867,0,0
+0.016089,0,0
+0.021329,0,0
+0.026641,0,0
+0.031913,0,0
+0.037583,0,0
+0.044291,0,0
+0.049748,0,0
+0.055707,0,0
+0.061186,0,0
+0.066851,0,0
+0.072400,0,0
+0.077987,0,0
+0.083283,0,0
+0.088771,0,0
+0.094373,0,0
+0.105974,0,0
+0.123604,0,0
+0.133048,0,0
+0.142842,0,0
+0.148320,0,0
+0.153988,0,0
+0.160722,0,0
+0.171181,0,0
+0.183134,0,0
+0.199713,425004,273038
+0.208283,0,0
+0.213562,0,0
+0.219579,0,0
+0.224962,0,0
+0.230460,0,0
+0.236076,0,0
+0.241298,3111016,5964519
+0.246775,10479777,20000420
+0.252017,10058500,19215564
+0.257294,10104897,19300787
+0.264313,13447956,25689874
+0.269573,10094933,19254409
+0.274861,10114935,19321730
+0.280190,3009751,5732569
+0.285857,0,0
+0.291246,0,0
+0.296828,0,0
+0.302980,0,0
+0.308592,0,0
+0.315118,0,0
+0.320620,0,0
+0.325850,0,0
+0.331834,0,0
+0.337165,0,0
+0.342389,0,0
+0.348008,0,0
+0.353462,0,0
+0.358721,0,0
+0.363960,0,0
+0.369257,0,0
+0.375194,0,0
+0.380679,0,0
+0.385990,0,0
+0.392906,0,0
+0.399860,0,0
+0.405492,0,0
+
+[cleanup] releasing 2 active counters
+
+[csv] samples were recorded to temporary file: /data/local/tmp/adreno_perf_stream_last.csv
+[csv] stdin is not interactive, so the file was kept at the temporary path.

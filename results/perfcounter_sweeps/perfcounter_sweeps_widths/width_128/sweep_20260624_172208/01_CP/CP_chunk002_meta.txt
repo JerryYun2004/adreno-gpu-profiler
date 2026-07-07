@@ -1,0 +1,27 @@
+group,CP
+capacity,14
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 128 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,CP_LONG_PREEMPTIONS,0x0,14,0x1ca,0x1cb
+GET_OK,CP_SQE_I_CACHE_STARVE,0x0,15,0x1c8,0x1c9
+GET_OK,CP_SQE_IDLE,0x0,16,0x1c6,0x1c7
+GET_OK,CP_SQE_PM4_STARVE_RB,0x0,17,0x1c4,0x1c5
+GET_OK,CP_SQE_PM4_STARVE_IB1,0x0,18,0x1c2,0x1c3
+GET_OK,CP_SQE_PM4_STARVE_IB2,0x0,19,0x1c0,0x1c1
+GET_OK,CP_SQE_PM4_STARVE_IB3,0x0,20,0x1be,0x1bf
+GET_OK,CP_SQE_PM4_STARVE_FSDT,0x0,21,0x1bc,0x1bd
+GET_OK,CP_SQE_PM4_STARVE_SDS,0x0,22,0x1ba,0x1bb
+GET_OK,CP_SQE_MRB_STARVE,0x0,23,0x1b8,0x1b9
+GET_OK,CP_SQE_RRB_STARVE,0x0,24,0x1b6,0x1b7
+GET_OK,CP_SQE_VSD_STARVE,0x0,25,0x1b4,0x1b5
+GET_OK,CP_VSD_DECODE_STARVE,0x0,26,0x1b2,0x1b3
+GET_OK,CP_SQE_PIPE_OUT_STALL,0x0,27,0x1b0,0x1b1
+result,ok
+active_counters,14
+attempted_counters,14
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172208/01_CP/CP_chunk002.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172208/01_CP/CP_chunk002_benchmark.log
+rows,1243
+benchmark_exit_status,0

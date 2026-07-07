@@ -1,0 +1,21 @@
+group,RB
+capacity,8
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 128 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,RB_C_WRITE,0xb,16,0x2ac,0x2ad
+GET_OK,RB_TOTAL_PASS,0xb,17,0x2aa,0x2ab
+GET_OK,RB_Z_PASS,0xb,18,0x2a8,0x2a9
+GET_OK,RB_Z_FAIL,0xb,19,0x2a6,0x2a7
+GET_OK,RB_S_FAIL,0xb,20,0x2a4,0x2a5
+GET_OK,RB_BLENDED_FXP_COMPONENTS,0xb,21,0x2a2,0x2a3
+GET_OK,RB_BLENDED_FP16_COMPONENTS,0xb,22,0x2a0,0x2a1
+GET_OK,RB_PS_INVOCATIONS,0xb,23,0x29e,0x29f
+result,ok
+active_counters,8
+attempted_counters,8
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172208/12_RB/RB_chunk003.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172208/12_RB/RB_chunk003_benchmark.log
+rows,1277
+benchmark_exit_status,0

@@ -1,0 +1,47 @@
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/07_TSE/TSE_chunk023.csv (4 active counters, 1320 rows)
+[chunk] TSE chunk 24 starting at enum-filtered index 92
+[GET] TSE_SETUP_CTRL_WORKING_CYCLE_L2              group=0x6 selector=92 reg_low=0x21c reg_high=0x21d
+[GET] TSE_SETUP_FDP3_WORKING_CYCLE_L2              group=0x6 selector=93 reg_low=0x21a reg_high=0x21b
+[GET] TSE_SETUP_FDP3_0_WORKING_CYCLE_L3            group=0x6 selector=94 reg_low=0x218 reg_high=0x219
+[GET] TSE_SETUP_FDP3_1_WORKING_CYCLE_L3            group=0x6 selector=95 reg_low=0x216 reg_high=0x217
+[bench] pid=8642 bursts=3 burst_sleep=0.200000 cmd=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/07_TSE/TSE_chunk024_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/07_TSE/TSE_chunk024.csv (4 active counters, 1320 rows)
+[chunk] TSE chunk 25 starting at enum-filtered index 96
+[GET] TSE_SETUP_FDP3_2_WORKING_CYCLE_L3            group=0x6 selector=96 reg_low=0x21c reg_high=0x21d
+[GET] TSE_SETUP_FDP3_3_WORKING_CYCLE_L3            group=0x6 selector=97 reg_low=0x21a reg_high=0x21b
+[GET] TSE_SETUP_FDP3_4_WORKING_CYCLE_L3            group=0x6 selector=98 reg_low=0x218 reg_high=0x219
+[GET] TSE_SETUP_FDP3_5_WORKING_CYCLE_L3            group=0x6 selector=99 reg_low=0x216 reg_high=0x217
+[bench] pid=8647 bursts=3 burst_sleep=0.200000 cmd=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/07_TSE/TSE_chunk025_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/07_TSE/TSE_chunk025.csv (4 active counters, 1313 rows)
+[chunk] TSE chunk 26 starting at enum-filtered index 100
+[GET] TSE_SETUP_FMUL_WORKING_CYCLE_L2              group=0x6 selector=100 reg_low=0x21c reg_high=0x21d
+[GET] TSE_SETUP_FMUL_0_WORKING_CYCLE_L3            group=0x6 selector=101 reg_low=0x21a reg_high=0x21b
+[GET] TSE_SETUP_FMUL_1_WORKING_CYCLE_L3            group=0x6 selector=102 reg_low=0x218 reg_high=0x219
+[GET] TSE_SETUP_FMUL_2_WORKING_CYCLE_L3            group=0x6 selector=103 reg_low=0x216 reg_high=0x217
+[bench] pid=8651 bursts=3 burst_sleep=0.200000 cmd=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/07_TSE/TSE_chunk026_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/07_TSE/TSE_chunk026.csv (4 active counters, 1318 rows)
+[chunk] TSE chunk 27 starting at enum-filtered index 104
+[GET] TSE_SETUP_FMUL_3_WORKING_CYCLE_L3            group=0x6 selector=104 reg_low=0x21c reg_high=0x21d
+[GET] TSE_SETUP_FMUL_4_WORKING_CYCLE_L3            group=0x6 selector=105 reg_low=0x21a reg_high=0x21b
+[GET] TSE_SETUP_FMUL_5_WORKING_CYCLE_L3            group=0x6 selector=106 reg_low=0x218 reg_high=0x219
+[GET] TSE_EDGE_SETUP_WORKING_CYCLE_L1              group=0x6 selector=107 reg_low=0x216 reg_high=0x217
+[bench] command: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] bursts: 3
+[bench] burst_sleep_s: 0.200000
+[bench] burst 1/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.8571,1129271481.527,8.000,9.034,PASS,"Adreno (TM) 830"
+[bench] burst 1/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 2/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.3134,1596688994.836,8.000,12.774,PASS,"Adreno (TM) 830"
+[bench] burst 2/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 3/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.4358,1460635013.278,8.000,11.685,PASS,"Adreno (TM) 830"
+[bench] burst 3/3 exit_status=0

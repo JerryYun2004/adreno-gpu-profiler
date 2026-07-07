@@ -1,0 +1,90 @@
+
+[selected] 2 counters, interval 0.005 s
+       SP         gid=0x0a selector=1    SP_BUSY_CYCLES                               (A8XX_PERF_SP_BUSY_CYCLES)
+       SP         gid=0x0a selector=2    SP_ALU_WORKING_CYCLES                        (A8XX_PERF_SP_ALU_WORKING_CYCLES)
+[GET] SP_BUSY_CYCLES                               group=0xa selector=1 reg_low=0x29c reg_high=0x29d
+[GET] SP_ALU_WORKING_CYCLES                        group=0xa selector=2 reg_low=0x29a reg_high=0x29b
+[csv] temp path for this run: /data/local/tmp/jerry_work/adreno_perf_stream_last.csv
+
+[stream] Press Ctrl+C to stop. Values are deltas since previous sample.
+[csv] logging elapsed_s and counter deltas to /data/local/tmp/jerry_work/adreno_perf_stream_last.csv
+elapsed_s,SP_BUSY_CYCLES,SP_ALU_WORKING_CYCLES
+0.005448,0,0
+0.010946,0,0
+0.016789,0,0
+0.022385,0,0
+0.027846,0,0
+0.033437,0,0
+0.038903,0,0
+0.044386,0,0
+0.049845,0,0
+0.296743,0,0
+0.302198,0,0
+0.307686,0,0
+0.313098,0,0
+0.318516,0,0
+0.323951,0,0
+0.329402,0,0
+0.334791,0,0
+0.340233,0,0
+0.345634,0,0
+0.351031,0,0
+0.356423,0,0
+0.361817,0,0
+0.367207,0,0
+0.372861,0,0
+0.378377,0,0
+0.385090,0,0
+0.390550,0,0
+0.396090,0,0
+0.401743,0,0
+0.408207,0,0
+0.413637,0,0
+0.418881,34025420,66845143
+0.424386,34552616,67634729
+0.429946,0,0
+0.435610,0,0
+0.441102,0,0
+0.446545,0,0
+0.464207,0,0
+0.469552,0,0
+0.474987,0,0
+0.480312,0,0
+0.485895,0,0
+0.493741,0,0
+0.500378,0,0
+0.505907,0,0
+0.512523,0,0
+0.517920,0,0
+0.523514,0,0
+0.529070,0,0
+0.534545,0,0
+0.540152,0,0
+0.545730,0,0
+0.551192,0,0
+0.556813,0,0
+0.562379,0,0
+0.567958,0,0
+0.573807,0,0
+0.579425,0,0
+0.584991,0,0
+0.590447,0,0
+0.595902,0,0
+0.601468,0,0
+0.607077,0,0
+0.612700,0,0
+0.618268,0,0
+0.623890,0,0
+0.629500,0,0
+0.635052,0,0
+0.640676,0,0
+0.646296,0,0
+0.651868,0,0
+0.657445,0,0
+0.663144,0,0
+0.668560,0,0
+
+[cleanup] releasing 2 active counters
+
+[csv] samples were recorded to temporary file: /data/local/tmp/jerry_work/adreno_perf_stream_last.csv
+[csv] stdin is not interactive, so the file was kept at the temporary path.

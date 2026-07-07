@@ -1,0 +1,61 @@
+[run] output directory: /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_152944
+[run] duration per chunk: 4.000000 s
+[run] interval: 0.001000 s
+[run] bursts per chunk: 1
+[run] burst sleep: 0.000000 s
+[run] width sequence count: 5
+[run] width sleep: 0.100000 s
+[run] width sequence: 128 256 512 1024 2048
+[run] benchmark command base: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv
+
+[group] CP: total selected counters=91, physical slots=14
+[chunk] CP chunk 1 starting at enum-filtered index 0
+[GET] CP_NEVER_COUNT                               group=0x0 selector=0 reg_low=0x1ca reg_high=0x1cb
+[GET] CP_ALWAYS_COUNT                              group=0x0 selector=1 reg_low=0x1c8 reg_high=0x1c9
+[GET] CP_BUSY_GFX_CORE_IDLE                        group=0x0 selector=2 reg_low=0x1c6 reg_high=0x1c7
+[GET] CP_BUSY_CYCLES                               group=0x0 selector=3 reg_low=0x1c4 reg_high=0x1c5
+[GET] CP_NUM_PREEMPTIONS                           group=0x0 selector=4 reg_low=0x1c2 reg_high=0x1c3
+[GET] CP_PREEMPTION_REACTION_DELAY                 group=0x0 selector=5 reg_low=0x1c0 reg_high=0x1c1
+[GET] CP_PREEMPTION_SWITCH_OUT_TIME                group=0x0 selector=6 reg_low=0x1be reg_high=0x1bf
+[GET] CP_PREEMPTION_SWITCH_IN_TIME                 group=0x0 selector=7 reg_low=0x1bc reg_high=0x1bd
+[GET] CP_DEAD_DRAWS_IN_BIN_RENDER                  group=0x0 selector=8 reg_low=0x1ba reg_high=0x1bb
+[GET] CP_PREDICATED_DRAWS_KILLED                   group=0x0 selector=9 reg_low=0x1b8 reg_high=0x1b9
+[GET] CP_MODE_SWITCH                               group=0x0 selector=10 reg_low=0x1b6 reg_high=0x1b7
+[GET] CP_ZPASS_DONE                                group=0x0 selector=11 reg_low=0x1b4 reg_high=0x1b5
+[GET] CP_CONTEXT_DONE                              group=0x0 selector=12 reg_low=0x1b2 reg_high=0x1b3
+[GET] CP_CACHE_FLUSH                               group=0x0 selector=13 reg_low=0x1b0 reg_high=0x1b1
+[bench] command_base: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv
+[bench] bursts: 1
+[bench] burst_sleep_s: 0.000000
+[bench] width_count: 5
+[bench] width_sleep_s: 0.100000
+[bench] widths: 128 256 512 1024 2048
+[bench] width_step 1/5 width=128 start
+[bench] width_step_cmd: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv --width 128
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,128,128,16384,4,0.9908,66145731.352,8.000,0.529,PASS,"Adreno (TM) 830"
+[bench] width_step 1/5 width=128 exit_status=0
+[bench] sleeping 0.100000 s before next width
+[bench] width_step 2/5 width=256 start
+[bench] width_step_cmd: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv --width 256
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,256,128,32768,4,2.2091,59333753.723,8.000,0.475,PASS,"Adreno (TM) 830"
+[bench] width_step 2/5 width=256 exit_status=0
+[bench] sleeping 0.100000 s before next width
+[bench] width_step 3/5 width=512 start
+[bench] width_step_cmd: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv --width 512
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,512,128,65536,4,0.5657,463416401.940,8.000,3.707,PASS,"Adreno (TM) 830"
+[bench] width_step 3/5 width=512 exit_status=0
+[bench] sleeping 0.100000 s before next width
+[bench] width_step 4/5 width=1024 start
+[bench] width_step_cmd: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv --width 1024
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,4,0.5400,970903703.704,8.000,7.767,PASS,"Adreno (TM) 830"
+[bench] width_step 4/5 width=1024 exit_status=0
+[bench] sleeping 0.100000 s before next width
+[bench] width_step 5/5 width=2048 start
+[bench] width_step_cmd: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv --width 2048
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,2048,128,262144,4,0.9614,1090669290.601,8.000,8.725,PASS,"Adreno (TM) 830"
+[bench] width_step 5/5 width=2048 exit_status=0

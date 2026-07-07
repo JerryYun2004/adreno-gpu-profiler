@@ -1,0 +1,20 @@
+group,PC
+capacity,8
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 2048 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,PC_S_TESS_SETUP_ACTIVE,0x2,80,0x1e2,0x1e3
+GET_OK,PC_S_TESS_PID_ACTIVE,0x2,81,0x1e0,0x1e1
+GET_OK,PC_S_TESS_PRIM_GEN_ACTIVE,0x2,82,0x1de,0x1df
+GET_OK,PC_S_TESS_FACTOR_TRANS,0x2,83,0x1dc,0x1dd
+GET_OK,PC_S_TESS_PC_UV_TRANS,0x2,84,0x1da,0x1db
+GET_OK,PC_S_TESS_PC_UV_PATCHES,0x2,85,0x1d8,0x1d9
+GET_OK,PC_S_MESH_VS_WAVES,0x2,86,0x1d6,0x1d7
+result,ok
+active_counters,7
+attempted_counters,7
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_2048/sweep_20260624_174136/03_PC/PC_chunk011.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_2048/sweep_20260624_174136/03_PC/PC_chunk011_benchmark.log
+rows,1287
+benchmark_exit_status,0

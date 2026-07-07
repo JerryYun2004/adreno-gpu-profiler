@@ -1,0 +1,19 @@
+group,ALWAYSON
+capacity,1
+duration_s,4.000000
+interval_s,0.001000
+bursts,1
+burst_sleep_s,0.000000
+width_count,5
+width_sleep_s,0.100000
+benchmark_cmd_base,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv
+widths,128,256,512,1024,2048
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,ALWAYSON,0x1b,0,0x8e7,0x8e8
+result,ok
+active_counters,1
+attempted_counters,1
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_174559/14_ALWAYSON/ALWAYSON_chunk001.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_174559/14_ALWAYSON/ALWAYSON_chunk001_benchmark.log
+rows,2614
+benchmark_exit_status,0

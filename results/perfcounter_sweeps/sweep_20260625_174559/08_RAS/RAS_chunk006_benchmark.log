@@ -1,0 +1,66 @@
+       group=0x7 selector=8 reg_low=0x224 reg_high=0x225
+[GET] RAS_FULLY_COVERED_8X4_TILES                  group=0x7 selector=9 reg_low=0x222 reg_high=0x223
+[GET] RAS_PRIM_KILLED_INVISILBE                    group=0x7 selector=10 reg_low=0x220 reg_high=0x221
+[GET] RAS_SUPERTILE_GEN_ACTIVE_CYCLES              group=0x7 selector=11 reg_low=0x21e reg_high=0x21f
+[bench] pid=8799 width_count=5 width_sleep=0.100000 cmd_base=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv
+[bench] widths: 128 256 512 1024 2048
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_174559/08_RAS/RAS_chunk003_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_174559/08_RAS/RAS_chunk003.csv (4 active counters, 2574 rows)
+[chunk] RAS chunk 4 starting at enum-filtered index 12
+[GET] RAS_LRZ_INTF_WORKING_CYCLES                  group=0x7 selector=12 reg_low=0x224 reg_high=0x225
+[GET] RAS_BLOCKS                                   group=0x7 selector=13 reg_low=0x222 reg_high=0x223
+[GET] RAS_FALSE_PARTIAL_STILE                      group=0x7 selector=14 reg_low=0x220 reg_high=0x221
+[GET] RAS_SLICE_BLOCK_NONEMTPY                     group=0x7 selector=15 reg_low=0x21e reg_high=0x21f
+[bench] pid=8805 width_count=5 width_sleep=0.100000 cmd_base=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv
+[bench] widths: 128 256 512 1024 2048
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_174559/08_RAS/RAS_chunk004_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_174559/08_RAS/RAS_chunk004.csv (4 active counters, 2557 rows)
+[chunk] RAS chunk 5 starting at enum-filtered index 16
+[GET] RAS_SLICE_BLOCK_EMPTY                        group=0x7 selector=16 reg_low=0x224 reg_high=0x225
+[GET] RAS_SAMPLE_MASK_GEN_LANE_0_WORKING_CC_L2     group=0x7 selector=17 reg_low=0x222 reg_high=0x223
+[GET] RAS_SAMPLE_MASK_GEN_LANE_1_WORKING_CC_L2     group=0x7 selector=18 reg_low=0x220 reg_high=0x221
+[GET] RAS_SAMPLE_MASK_GEN_LANE_2_WORKING_CC_L2     group=0x7 selector=19 reg_low=0x21e reg_high=0x21f
+[bench] pid=8811 width_count=5 width_sleep=0.100000 cmd_base=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv
+[bench] widths: 128 256 512 1024 2048
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_174559/08_RAS/RAS_chunk005_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_174559/08_RAS/RAS_chunk005.csv (4 active counters, 2580 rows)
+[chunk] RAS chunk 6 starting at enum-filtered index 20
+[GET] RAS_SAMPLE_MASK_GEN_LANE_3_WORKING_CC_L2     group=0x7 selector=20 reg_low=0x224 reg_high=0x225
+[GET] RAS_SAMPLE_MASK_GEN_LANE_4_WORKING_CC_L2     group=0x7 selector=21 reg_low=0x222 reg_high=0x223
+[GET] RAS_SAMPLE_MASK_GEN_LANE_5_WORKING_CC_L2     group=0x7 selector=22 reg_low=0x220 reg_high=0x221
+[GET] RAS_SAMPLE_MASK_GEN_LANE_6_WORKING_CC_L2     group=0x7 selector=23 reg_low=0x21e reg_high=0x21f
+[bench] command_base: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv
+[bench] bursts: 1
+[bench] burst_sleep_s: 0.000000
+[bench] width_count: 5
+[bench] width_sleep_s: 0.100000
+[bench] widths: 128 256 512 1024 2048
+[bench] width_step 1/5 width=128 start
+[bench] width_step_cmd: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv --width 128
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,128,128,16384,4,1.4035,46693294.536,8.000,0.374,PASS,"Adreno (TM) 830"
+[bench] width_step 1/5 width=128 exit_status=0
+[bench] sleeping 0.100000 s before next width
+[bench] width_step 2/5 width=256 start
+[bench] width_step_cmd: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv --width 256
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,256,128,32768,4,0.6502,201600846.566,8.000,1.613,PASS,"Adreno (TM) 830"
+[bench] width_step 2/5 width=256 exit_status=0
+[bench] sleeping 0.100000 s before next width
+[bench] width_step 3/5 width=512 start
+[bench] width_step_cmd: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv --width 512
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,512,128,65536,4,0.7205,363851879.817,8.000,2.911,PASS,"Adreno (TM) 830"
+[bench] width_step 3/5 width=512 exit_status=0
+[bench] sleeping 0.100000 s before next width
+[bench] width_step 4/5 width=1024 start
+[bench] width_step_cmd: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv --width 1024
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,4,0.6492,807568490.091,8.000,6.461,PASS,"Adreno (TM) 830"
+[bench] width_step 4/5 width=1024 exit_status=0
+[bench] sleeping 0.100000 s before next width
+[bench] width_step 5/5 width=2048 start
+[bench] width_step_cmd: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv --width 2048
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,2048,128,262144,4,0.6709,1562974280.242,8.000,12.504,PASS,"Adreno (TM) 830"
+[bench] width_step 5/5 width=2048 exit_status=0

@@ -1,0 +1,19 @@
+group,VPC
+capacity,6
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 128 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,VPC_BE_STALL_CYCLES_HLSQ_PRIM_ALLOC,0x5,54,0x20a,0x20b
+GET_OK,VPC_BE_STALL_CYCLES_SP_LM,0x5,55,0x208,0x209
+GET_OK,VPC_BE_NUM_PA_REQ,0x5,56,0x206,0x207
+GET_OK,VPC_BE_NUM_LM_REQ_HIT,0x5,57,0x204,0x205
+GET_OK,VPC_BE_NUM_ATTR_REQ_LM,0x5,58,0x202,0x203
+GET_OK,VPC_BE_LM_TRANSACTION,0x5,59,0x200,0x201
+result,ok
+active_counters,6
+attempted_counters,6
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172208/06_VPC/VPC_chunk010.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172208/06_VPC/VPC_chunk010_benchmark.log
+rows,1288
+benchmark_exit_status,0

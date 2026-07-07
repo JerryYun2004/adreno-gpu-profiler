@@ -1,0 +1,26 @@
+group,SP
+capacity,24
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 512 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,SP_TTU_GPR_WR_REQ,0xa,192,0x29c,0x29d
+GET_OK,SP_GPR_CACHE_SRC0_GPR_RDCNT,0xa,193,0x29a,0x29b
+GET_OK,SP_GPR_CACHE_SRC0_GPR_CACHE_HIT_RDCNT,0xa,194,0x298,0x299
+GET_OK,SP_GPR_CACHE_SRC0_GPR_CACHE_HINT_RDCNT,0xa,195,0x296,0x297
+GET_OK,SP_GPR_CACHE_SRC1_RDCNT,0xa,196,0x294,0x295
+GET_OK,SP_GPR_CACHE_SRC1_GPR_CACHE_HIT_RDCNT,0xa,197,0x292,0x293
+GET_OK,SP_GPR_CACHE_SRC1_GPR_CACHE_HINT_RDCNT,0xa,198,0x290,0x291
+GET_OK,SP_GPR_CACHE_SRC2_RDCNT,0xa,199,0x28e,0x28f
+GET_OK,SP_GPR_CACHE_SRC2_GPR_CACHE_HIT_RDCNT,0xa,200,0x28c,0x28d
+GET_OK,SP_GPR_CACHE_SRC2_GPR_CACHE_HINT_RDCNT,0xa,201,0x28a,0x28b
+GET_OK,SP_UCHE_READ_BURST,0xa,202,0x288,0x289
+GET_OK,SP_UCHE_WRITE_BURST,0xa,203,0x286,0x287
+GET_OK,SP_LDST_GMEM_REQ_NUM,0xa,204,0x284,0x285
+result,ok
+active_counters,13
+attempted_counters,13
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_512/sweep_20260624_173152/11_SP/SP_chunk009.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_512/sweep_20260624_173152/11_SP/SP_chunk009_benchmark.log
+rows,1251
+benchmark_exit_status,0

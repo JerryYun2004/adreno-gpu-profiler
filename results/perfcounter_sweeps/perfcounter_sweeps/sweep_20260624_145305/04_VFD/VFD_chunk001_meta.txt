@@ -1,0 +1,21 @@
+group,VFD
+capacity,8
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 256 --rows 256 --repeats 8 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,VFD_NEVER_COUNT,0x3,0,0x1f2,0x1f3
+GET_OK,VFD_BUSY_CYCLES,0x3,1,0x1f0,0x1f1
+GET_OK,VFD_STALL_CYCLES_UCHE,0x3,2,0x1ee,0x1ef
+GET_OK,VFD_STALL_CYCLES_VPC_ALLOC,0x3,3,0x1ec,0x1ed
+GET_OK,VFD_STALL_CYCLES_SP_INFO,0x3,4,0x1ea,0x1eb
+GET_OK,VFD_STALL_CYCLES_SP_ATTR,0x3,5,0x1e8,0x1e9
+GET_OK,VFD_STARVE_CYCLES_UCHE,0x3,6,0x1e6,0x1e7
+GET_OK,VFD_RBUFFER_FULL,0x3,7,0x1e4,0x1e5
+result,ok
+active_counters,8
+attempted_counters,8
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260624_145305/04_VFD/VFD_chunk001.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260624_145305/04_VFD/VFD_chunk001_benchmark.log
+rows,1278
+benchmark_exit_status,0

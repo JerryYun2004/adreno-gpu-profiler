@@ -1,0 +1,16 @@
+group,counter,total_all_widths,total_width_first,total_width_last,scaling_ratio_last_over_first,corr_total_vs_width,slope_total_vs_width,label,total_w128,total_w256,total_w512,total_w1024,total_w2048
+CP,CP_AHB_STALL_SQE_RD_OTHER,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+CP,CP_AHB_STALL_SQE_WR_OTHER,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+CP,CP_AHB_WR_STALL_PRE_DRAWS,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+CP,CP_DEAD_DRAWS_IN_BIN_RENDER,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+CP,CP_MEMORY_POOL_BELOW_THRESH,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+CP,CP_MODE_SWITCH,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+CP,CP_NEVER_COUNT,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+CP,CP_OUTPUT_BLOCKED,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+CP,CP_PREDICATED_DRAWS_KILLED,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+CP,CP_SQE_DRAW_EXEC,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+CP,CP_SQE_LOAD_STATE_EXEC,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+CP,CP_WAIT_ON_OTHER_PIPE,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+CP,CP_ZPASS_DONE,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+RB,RB_BLENDED_FP32_COMPONENTS,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0
+RB,RB_STALL_CYCLES_VPC_BE,0.0,0.0,0.0,,,0.0,zero_all_widths,0.0,0.0,0.0,0.0,0.0

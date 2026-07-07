@@ -1,0 +1,22 @@
+2                               group=0x8 selector=163 reg_low=0x22e reg_high=0x22f
+[GET] CCHE_BANK_REQ3                               group=0x8 selector=164 reg_low=0x22c reg_high=0x22d
+[GET] CCHE_BANK_REQ4                               group=0x8 selector=165 reg_low=0x22a reg_high=0x22b
+[GET] CCHE_BANK_REQ5                               group=0x8 selector=166 reg_low=0x228 reg_high=0x229
+[GET] CCHE_BANK_REQ6                               group=0x8 selector=167 reg_low=0x226 reg_high=0x227
+[bench] command: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] bursts: 3
+[bench] burst_sleep_s: 0.200000
+[bench] burst 1/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.4315,1464992909.585,8.000,11.720,PASS,"Adreno (TM) 830"
+[bench] burst 1/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 2/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.3099,1601007714.359,8.000,12.808,PASS,"Adreno (TM) 830"
+[bench] burst 2/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 3/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.2804,1637932933.187,8.000,13.103,PASS,"Adreno (TM) 830"
+[bench] burst 3/3 exit_status=0

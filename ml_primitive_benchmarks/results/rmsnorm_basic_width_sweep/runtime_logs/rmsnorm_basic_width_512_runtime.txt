@@ -1,0 +1,2 @@
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+rmsnorm,basic,512,4096,2097152,4096,1125.6699,7630953463.821,16.000,122.095,PASS,"Adreno (TM) 830"

@@ -6,6 +6,7 @@ set -euo pipefail
 : "${HOST_TAG:=darwin-x86_64}"
 
 make NDK="$NDK" API="$API" HOST_TAG="$HOST_TAG" all
+adb shell 'su -c "mkdir -p /data/local/tmp/jerry_work"'
 adb push adreno_perf_stream /data/local/tmp/adreno_perf_stream
 adb shell chmod 755 /data/local/tmp/adreno_perf_stream
 

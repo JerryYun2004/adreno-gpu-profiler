@@ -1,0 +1,17 @@
+[kgsl_get_read_probe] Opening /dev/kgsl-3d0
+[kgsl_get_read_probe] open succeeded, fd=3
+[kgsl_get_read_probe] Testing group=0xa countable=6
+[kgsl_get_read_probe] PERFCOUNTER_GET succeeded
+[kgsl_get_read_probe] returned offset=0x29c offset_hi=0x29d
+[kgsl_get_read_probe] sample=000 value=0 delta=N/A
+[kgsl_get_read_probe] sample=001 value=0 delta=0
+[kgsl_get_read_probe] sample=002 value=0 delta=0
+[kgsl_get_read_probe] sample=003 value=0 delta=0
+[kgsl_get_read_probe] sample=004 value=0 delta=0
+[kgsl_get_read_probe] sample=005 value=0 delta=0
+[kgsl_get_read_probe] sample=006 value=0 delta=0
+[kgsl_get_read_probe] sample=007 value=0 delta=0
+[kgsl_get_read_probe] sample=008 value=0 delta=0
+[kgsl_get_read_probe] sample=009 value=0 delta=0
+[kgsl_get_read_probe] PERFCOUNTER_PUT succeeded
+[kgsl_get_read_probe] Done.

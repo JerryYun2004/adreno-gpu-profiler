@@ -1,0 +1,24 @@
+group,TP
+capacity,12
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 2048 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,TP_PACKED_POINT_SINGLE_VALID_FP32,0x9,132,0x26c,0x26d
+GET_OK,TP_TOTAL_DECOMP_L1_RESP_CH0,0x9,133,0x26a,0x26b
+GET_OK,TP_TOTAL_DECOMP_L1_RESP_CH1,0x9,134,0x268,0x269
+GET_OK,TP_L1POINT5_PRE_L1_DECOMP_0_WORKLOAD_R,0x9,135,0x266,0x267
+GET_OK,TP_L1POINT5_PRE_L1_DECOMP_1_WORKLOAD_R,0x9,136,0x264,0x265
+GET_OK,TP_L1POINT5_ASTC_DECODER_0_WORKLOAD_R,0x9,137,0x262,0x263
+GET_OK,TP_L1POINT5_ASTC_DECODER_1_WORKLOAD_R,0x9,138,0x260,0x261
+GET_OK,TP_PARTIAL_SURFACE_PGMEM_PIXELS,0x9,139,0x25e,0x25f
+GET_OK,TP_PARTIAL_SURFACE_SYSMEM_PIXELS,0x9,140,0x25c,0x25d
+GET_OK,TP_PARTIAL_SURFACE_PGMEM_MISS_REQ,0x9,141,0x25a,0x25b
+GET_OK,TP_PARTIAL_SURFACE_SYSMEM_MISS_REQ,0x9,142,0x258,0x259
+result,ok
+active_counters,11
+attempted_counters,11
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_2048/sweep_20260624_174136/10_TP/TP_chunk012.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_2048/sweep_20260624_174136/10_TP/TP_chunk012_benchmark.log
+rows,1264
+benchmark_exit_status,0

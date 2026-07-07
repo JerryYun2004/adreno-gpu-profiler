@@ -1,0 +1,27 @@
+group,CP
+capacity,14
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 128 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,CP_SQE_SYNC_STALL,0x0,28,0x1ca,0x1cb
+GET_OK,CP_SQE_PM4_WFI_STALL,0x0,29,0x1c8,0x1c9
+GET_OK,CP_SQE_SYS_WFI_STALL,0x0,30,0x1c6,0x1c7
+GET_OK,CP_WAIT_ON_OTHER_PIPE,0x0,31,0x1c4,0x1c5
+GET_OK,CP_OUTPUT_BLOCKED,0x0,32,0x1c2,0x1c3
+GET_OK,CP_SQE_T4_EXEC,0x0,33,0x1c0,0x1c1
+GET_OK,CP_SQE_LOAD_STATE_EXEC,0x0,34,0x1be,0x1bf
+GET_OK,CP_SQE_SAVE_SDS_STATE,0x0,35,0x1bc,0x1bd
+GET_OK,CP_SQE_DRAW_EXEC,0x0,36,0x1ba,0x1bb
+GET_OK,CP_SQE_CTXT_REG_BUNCH_EXEC,0x0,37,0x1b8,0x1b9
+GET_OK,CP_SQE_EXEC_PROFILED,0x0,38,0x1b6,0x1b7
+GET_OK,CP_MEMORY_POOL_EMPTY,0x0,39,0x1b4,0x1b5
+GET_OK,CP_MEMORY_POOL_SYNC_STALL,0x0,40,0x1b2,0x1b3
+GET_OK,CP_MEMORY_POOL_ABOVE_THRESH,0x0,41,0x1b0,0x1b1
+result,ok
+active_counters,14
+attempted_counters,14
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172150/01_CP/CP_chunk003.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172150/01_CP/CP_chunk003_benchmark.log
+rows,0
+benchmark_exit_status,143

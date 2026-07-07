@@ -1,0 +1,2 @@
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,256,262144,256,28.7084,2337604907.500,8.000,18.701,PASS,"Adreno (TM) 830"

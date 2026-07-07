@@ -1,0 +1,25 @@
+group,TP
+capacity,12
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 512 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,TP_QUADS_CONSTANT_MULTIPLIED,0x9,48,0x26c,0x26d
+GET_OK,TP_FRONTEND_WORKING_CYCLES,0x9,49,0x26a,0x26b
+GET_OK,TP_L1_TAG_WORKING_CYCLES,0x9,50,0x268,0x269
+GET_OK,TP_L1_DATA_WRITE_WORKING_CYCLES,0x9,51,0x266,0x267
+GET_OK,TP_PRE_L1_DECOM_WORKING_CYCLES,0x9,52,0x264,0x265
+GET_OK,TP_BACKEND_WORKING_CYCLES,0x9,53,0x262,0x263
+GET_OK,TP_L1_5_CACHE_WORKING_CYCLES,0x9,54,0x260,0x261
+GET_OK,TP_STARVE_CYCLES_SP,0x9,55,0x25e,0x25f
+GET_OK,TP_STARVE_CYCLES_UCHE,0x9,56,0x25c,0x25d
+GET_OK,TP_STALL_CYCLES_UFC,0x9,57,0x25a,0x25b
+GET_OK,TP_FORMAT_DECOMP_POINT,0x9,58,0x258,0x259
+GET_OK,TP_FILTER_POINT_FP16,0x9,59,0x256,0x257
+result,ok
+active_counters,12
+attempted_counters,12
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_512/sweep_20260624_173152/10_TP/TP_chunk005.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_512/sweep_20260624_173152/10_TP/TP_chunk005_benchmark.log
+rows,1253
+benchmark_exit_status,0

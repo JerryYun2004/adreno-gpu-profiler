@@ -1,0 +1,67 @@
+#version 450
+// Fused/local-memory softmax. One workgroup computes one row.
+// Loads each x once into shared memory, then reuses it for exp/sum and output.
+// Build/run with width <= MAX_WIDTH. Default MAX_WIDTH is 8192.
+
+#ifndef MAX_WIDTH
+#define MAX_WIDTH 8192
+#endif
+
+layout(local_size_x = 256, local_size_y = 1, local_size_z = 1) in;
+
+layout(set = 0, binding = 0, std430) readonly buffer InputBuffer { float x[]; };
+layout(set = 0, binding = 1, std430) readonly buffer WeightBuffer { float w[]; }; // unused
+layout(set = 0, binding = 2, std430) writeonly buffer OutputBuffer { float y[]; };
+
+layout(push_constant) uniform PushConstants {
+    uint width;
+    uint rows;
+    uint elements;
+    uint flags;
+    float epsilon;
+} pc;
+
+shared float row_cache[MAX_WIDTH];
+shared float scratch[256];
+
+void main() {
+    uint row = gl_WorkGroupID.x;
+    uint tid = gl_LocalInvocationID.x;
+    if (row >= pc.rows || pc.width > uint(MAX_WIDTH)) return;
+
+    uint base = row * pc.width;
+
+    float local_max = -3.402823466e+38;
+    for (uint i = tid; i < pc.width; i += 256u) {
+        float v = x[base + i];
+        row_cache[i] = v;
+        local_max = max(local_max, v);
+    }
+    scratch[tid] = local_max;
+    barrier();
+
+    for (uint stride = 128u; stride > 0u; stride >>= 1u) {
+        if (tid < stride) scratch[tid] = max(scratch[tid], scratch[tid + stride]);
+        barrier();
+    }
+    float row_max = scratch[0];
+
+    float local_sum = 0.0;
+    for (uint i = tid; i < pc.width; i += 256u) {
+        float e = exp(row_cache[i] - row_max);
+        row_cache[i] = e;
+        local_sum += e;
+    }
+    scratch[tid] = local_sum;
+    barrier();
+
+    for (uint stride = 128u; stride > 0u; stride >>= 1u) {
+        if (tid < stride) scratch[tid] += scratch[tid + stride];
+        barrier();
+    }
+    float inv_sum = 1.0 / scratch[0];
+
+    for (uint i = tid; i < pc.width; i += 256u) {
+        y[base + i] = row_cache[i] * inv_sum;
+    }
+}

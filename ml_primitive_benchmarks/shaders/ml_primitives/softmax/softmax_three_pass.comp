@@ -1,0 +1,60 @@
+#version 450
+// Row-wise stable softmax baseline. One workgroup computes one row.
+// Global traffic model: read x for max, read x for exp/sum, read x again for normalize, write y.
+
+layout(local_size_x = 256, local_size_y = 1, local_size_z = 1) in;
+
+layout(set = 0, binding = 0, std430) readonly buffer InputBuffer { float x[]; };
+layout(set = 0, binding = 1, std430) readonly buffer WeightBuffer { float w[]; }; // unused, kept for common descriptor layout
+layout(set = 0, binding = 2, std430) writeonly buffer OutputBuffer { float y[]; };
+
+layout(push_constant) uniform PushConstants {
+    uint width;
+    uint rows;
+    uint elements;
+    uint flags;
+    float epsilon;
+} pc;
+
+shared float scratch[256];
+
+void main() {
+    uint row = gl_WorkGroupID.x;
+    uint tid = gl_LocalInvocationID.x;
+    if (row >= pc.rows) return;
+
+    uint base = row * pc.width;
+
+    // Pass 1: reduce row max.
+    float local_max = -3.402823466e+38;
+    for (uint i = tid; i < pc.width; i += 256u) {
+        local_max = max(local_max, x[base + i]);
+    }
+    scratch[tid] = local_max;
+    barrier();
+
+    for (uint stride = 128u; stride > 0u; stride >>= 1u) {
+        if (tid < stride) scratch[tid] = max(scratch[tid], scratch[tid + stride]);
+        barrier();
+    }
+    float row_max = scratch[0];
+
+    // Pass 2: compute exp(x-max) and reduce sum.
+    float local_sum = 0.0;
+    for (uint i = tid; i < pc.width; i += 256u) {
+        local_sum += exp(x[base + i] - row_max);
+    }
+    scratch[tid] = local_sum;
+    barrier();
+
+    for (uint stride = 128u; stride > 0u; stride >>= 1u) {
+        if (tid < stride) scratch[tid] += scratch[tid + stride];
+        barrier();
+    }
+    float inv_sum = 1.0 / scratch[0];
+
+    // Pass 3: reread input and write normalized output.
+    for (uint i = tid; i < pc.width; i += 256u) {
+        y[base + i] = exp(x[base + i] - row_max) * inv_sum;
+    }
+}

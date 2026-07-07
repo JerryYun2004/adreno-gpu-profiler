@@ -1,0 +1,21 @@
+group,PC
+capacity,8
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 256 --rows 256 --repeats 8 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,PC_US_STALL_CYCLES_COMPUTE_GFX,0x2,24,0x1e2,0x1e3
+GET_OK,PC_US_STALL_CYCLES_GFX_COMPUTE,0x2,25,0x1e0,0x1e1
+GET_OK,PC_US_PREDRAW_STALLS,0x2,26,0x1de,0x1df
+GET_OK,PC_US_DP0_INPUT_STALLS,0x2,27,0x1dc,0x1dd
+GET_OK,PC_US_DP1_INPUT_STALLS,0x2,28,0x1da,0x1db
+GET_OK,PC_US_BR_STALLS_BV_WORKLOAD,0x2,29,0x1d8,0x1d9
+GET_OK,PC_US_BV_STALLS_BR_WORKLOAD,0x2,30,0x1d6,0x1d7
+GET_OK,PC_US_PASSPAIR_STALL,0x2,31,0x1d4,0x1d5
+result,ok
+active_counters,8
+attempted_counters,8
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260624_145250/03_PC/PC_chunk004.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260624_145250/03_PC/PC_chunk004_benchmark.log
+rows,0
+benchmark_exit_status,143

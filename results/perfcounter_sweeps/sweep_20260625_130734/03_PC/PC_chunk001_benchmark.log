@@ -1,0 +1,44 @@
+tives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/02_RBBM/RBBM_chunk003_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/02_RBBM/RBBM_chunk003.csv (4 active counters, 1316 rows)
+[chunk] RBBM chunk 4 starting at enum-filtered index 12
+[GET] RBBM_S_PC_BUSY                               group=0x1 selector=12 reg_low=0x1d2 reg_high=0x1d3
+[GET] RBBM_S_TESS_BUSY                             group=0x1 selector=13 reg_low=0x1d0 reg_high=0x1d1
+[GET] RBBM_S_TSEFE_BUSY                            group=0x1 selector=14 reg_low=0x1ce reg_high=0x1cf
+[GET] RBBM_S_TSEBE_BUSY                            group=0x1 selector=15 reg_low=0x1cc reg_high=0x1cd
+[bench] pid=8314 bursts=3 burst_sleep=0.200000 cmd=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/02_RBBM/RBBM_chunk004_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/02_RBBM/RBBM_chunk004.csv (4 active counters, 1317 rows)
+[chunk] RBBM chunk 5 starting at enum-filtered index 16
+[GET] RBBM_S_RAS_BUSY                              group=0x1 selector=16 reg_low=0x1d2 reg_high=0x1d3
+[bench] pid=8318 bursts=3 burst_sleep=0.200000 cmd=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/02_RBBM/RBBM_chunk005_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/02_RBBM/RBBM_chunk005.csv (1 active counters, 1325 rows)
+
+[group] PC: total selected counters=87, physical slots=8
+[chunk] PC chunk 1 starting at enum-filtered index 0
+[GET] PC_NEVER_COUNT                               group=0x2 selector=0 reg_low=0x1e2 reg_high=0x1e3
+[GET] PC_US_BUSY_CYCLES                            group=0x2 selector=1 reg_low=0x1e0 reg_high=0x1e1
+[GET] PC_US_WORKING_CYCLES                         group=0x2 selector=2 reg_low=0x1de reg_high=0x1df
+[GET] PC_US_UCHE_OUTSTANDING_TRANS                 group=0x2 selector=3 reg_low=0x1dc reg_high=0x1dd
+[GET] PC_US_PASS1_TF_STALL_CYCLES                  group=0x2 selector=4 reg_low=0x1da reg_high=0x1db
+[GET] PC_US_STARVE_CYCLES_FOR_INDEX                group=0x2 selector=5 reg_low=0x1d8 reg_high=0x1d9
+[GET] PC_US_STARVE_CYCLES_FOR_TF                   group=0x2 selector=6 reg_low=0x1d6 reg_high=0x1d7
+[GET] PC_US_STARVE_CYCLES_FOR_VIZ_STREAM           group=0x2 selector=7 reg_low=0x1d4 reg_high=0x1d5
+[bench] command: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] bursts: 3
+[bench] burst_sleep_s: 0.200000
+[bench] burst 1/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,3.1991,655552158.727,8.000,5.244,PASS,"Adreno (TM) 830"
+[bench] burst 1/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 2/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,3.0923,678186924.133,8.000,5.425,PASS,"Adreno (TM) 830"
+[bench] burst 2/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 3/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,3.1468,666445699.417,8.000,5.332,PASS,"Adreno (TM) 830"
+[bench] burst 3/3 exit_status=0

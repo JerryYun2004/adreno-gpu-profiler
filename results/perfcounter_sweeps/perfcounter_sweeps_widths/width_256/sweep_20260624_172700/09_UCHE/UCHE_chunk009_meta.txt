@@ -1,0 +1,24 @@
+group,UCHE
+capacity,24
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 256 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,CCHE_GMEM0_LOCAL_RD_REQUEST,0x8,192,0x254,0x255
+GET_OK,CCHE_GMEM0_LOCAL_WR_REQUEST,0x8,193,0x252,0x253
+GET_OK,CCHE_GMEM1_LOCAL_RD_REQUEST,0x8,194,0x250,0x251
+GET_OK,CCHE_GMEM1_LOCAL_WR_REQUEST,0x8,195,0x24e,0x24f
+GET_OK,CCHE_GMEM0_REMOTE_RD_REQUEST,0x8,196,0x24c,0x24d
+GET_OK,CCHE_GMEM0_REMOTE_WR_REQUEST,0x8,197,0x24a,0x24b
+GET_OK,CCHE_GMEM1_REMOTE_RD_REQUEST,0x8,198,0x248,0x249
+GET_OK,CCHE_GMEM1_REMOTE_WR_REQUEST,0x8,199,0x246,0x247
+GET_OK,CCHE_STALL_CYCLES_TP,0x8,200,0x244,0x245
+GET_OK,CCHE_ATOMIC_REQUESTS_SP_TOTAL,0x8,201,0x242,0x243
+GET_OK,CCHE_ATOMIC_PACKING_BEAT_SP_TOTAL,0x8,202,0x240,0x241
+result,ok
+active_counters,11
+attempted_counters,11
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_256/sweep_20260624_172700/09_UCHE/UCHE_chunk009.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_256/sweep_20260624_172700/09_UCHE/UCHE_chunk009_benchmark.log
+rows,1266
+benchmark_exit_status,0

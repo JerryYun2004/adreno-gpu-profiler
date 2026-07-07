@@ -1,0 +1,19 @@
+group,HLSQ
+capacity,6
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 128 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,HLSQ_STALL_CYCLES_UCHE,0x4,6,0x1fe,0x1ff
+GET_OK,HLSQ_RESERVED_7,0x4,7,0x1fc,0x1fd
+GET_OK,HLSQ_RESERVED_8,0x4,8,0x1fa,0x1fb
+GET_OK,HLSQ_RESERVED_9,0x4,9,0x1f8,0x1f9
+GET_OK,HLSQ_COMPUTE_DRAWCALLS,0x4,10,0x1f6,0x1f7
+GET_OK,HLSQ_FS_DATA_WAIT_PROGRAMMING,0x4,11,0x1f4,0x1f5
+result,ok
+active_counters,6
+attempted_counters,6
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172150/05_HLSQ/HLSQ_chunk002.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172150/05_HLSQ/HLSQ_chunk002_benchmark.log
+rows,0
+benchmark_exit_status,143

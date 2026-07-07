@@ -1,0 +1,21 @@
+group,PC
+capacity,8
+duration_s,10.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 256 --rows 256 --repeats 32 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,PC_US_STARVE_CYCLES_DI,0x2,8,0x1e2,0x1e3
+GET_OK,PC_US_VIS_STREAMS_LOADED,0x2,9,0x1e0,0x1e1
+GET_OK,PC_US_INSTANCES,0x2,10,0x1de,0x1df
+GET_OK,PC_US_DEAD_PRIM,0x2,11,0x1dc,0x1dd
+GET_OK,PC_US_SLICE_LIVE_PRIM,0x2,12,0x1da,0x1db
+GET_OK,PC_US_3D_DRAWCALLS,0x2,13,0x1d8,0x1d9
+GET_OK,PC_US_2D_DRAWCALLS,0x2,14,0x1d6,0x1d7
+GET_OK,PC_US_NON_DRAWCALL_GLOBAL_EVENTS,0x2,15,0x1d4,0x1d5
+result,ok
+active_counters,8
+attempted_counters,8
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260624_124835/03_PC/PC_chunk002.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260624_124835/03_PC/PC_chunk002_benchmark.log
+rows,5502
+benchmark_exit_status,0

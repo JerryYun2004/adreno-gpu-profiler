@@ -1,0 +1,6 @@
+group,counter,n_runs,majority_label,majority_label_count,label_consistency,ratio_mean,ratio_std,ratio_cv,corr_mean,corr_std,total_all_mean,total_all_std,total_w128_mean,total_w128_std,total_w128_cv,total_w256_mean,total_w256_std,total_w256_cv,total_w512_mean,total_w512_std,total_w512_cv,total_w1024_mean,total_w1024_std,total_w1024_cv,total_w2048_mean,total_w2048_std,total_w2048_cv,stable_strong_scaling,near_16x_scaling
+TP,TP_OUTPUT_PIXELS,2,strong_width_scaling,2,1.0,16.0,0.0,0.0,1.0,0.0,2031616.0,0.0,65536.0,0.0,0.0,131072.0,0.0,0.0,262144.0,0.0,0.0,524288.0,0.0,0.0,1048576.0,0.0,0.0,True,True
+TP,TP_TP_SP_TRANS,2,strong_width_scaling,2,1.0,16.0,0.0,0.0,1.0,0.0,1015808.0,0.0,32768.0,0.0,0.0,65536.0,0.0,0.0,131072.0,0.0,0.0,262144.0,0.0,0.0,524288.0,0.0,0.0,True,True
+TP,TP_L1_CACHELINE_MISSES,2,strong_width_scaling,2,1.0,16.0,0.0,0.0,1.0,0.0,253952.0,0.0,8192.0,0.0,0.0,16384.0,0.0,0.0,32768.0,0.0,0.0,65536.0,0.0,0.0,131072.0,0.0,0.0,True,True
+TP,TP_L1_CACHELINE_REQUESTS,2,strong_width_scaling,2,1.0,16.0,0.0,0.0,1.0,0.0,253952.0,0.0,8192.0,0.0,0.0,16384.0,0.0,0.0,32768.0,0.0,0.0,65536.0,0.0,0.0,131072.0,0.0,0.0,True,True
+TP,TP_SP_TP_TRANS,2,strong_width_scaling,2,1.0,16.0,0.0,0.0,1.0,0.0,63488.0,0.0,2048.0,0.0,0.0,4096.0,0.0,0.0,8192.0,0.0,0.0,16384.0,0.0,0.0,32768.0,0.0,0.0,True,True

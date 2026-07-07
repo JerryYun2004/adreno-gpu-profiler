@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.18)
+project(vulkan_ml_primitive_bench CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(Vulkan REQUIRED)
+add_executable(ml_primitive_bench ml_primitive_bench.cpp)
+target_link_libraries(ml_primitive_bench PRIVATE Vulkan::Vulkan)

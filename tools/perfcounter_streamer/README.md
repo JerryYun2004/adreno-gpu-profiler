@@ -94,7 +94,7 @@ Values are deltas since the previous sample, not cumulative raw counter values.
 The program also writes every sample to a temporary CSV file on the phone:
 
 ```text
-/data/local/tmp/adreno_perf_stream_last.csv
+/data/local/tmp/jerry_work/adreno_perf_stream_last.csv
 ```
 
 The CSV includes `elapsed_s` as the first column, followed by the selected counter deltas.
@@ -114,7 +114,7 @@ exit
 adb pull /data/local/tmp/sp_alu_test.csv ./sp_alu_test.csv
 ```
 
-If stdin is not interactive, the program keeps the temporary CSV at `/data/local/tmp/adreno_perf_stream_last.csv`.
+If stdin is not interactive, the program keeps the temporary CSV at `/data/local/tmp/jerry_work/adreno_perf_stream_last.csv`.
 
 With `--csv`, the terminal stream itself is CSV-formatted and includes an `elapsed_s` column so it can still be redirected on the host.
 
@@ -159,3 +159,31 @@ For non-interactive best-match selection, use `-n`:
 ```bash
 adb shell 'su -c "/data/local/tmp/adreno_perf_stream -n -i 1 alu busy"'
 ```
+
+## Group-wide presets
+
+Use `--list-presets` to see all generated perfcounter enum groups:
+
+```bash
+adb shell 'su -c "/data/local/tmp/adreno_perf_stream --list-presets"'
+```
+
+Use `--preset <group>` to select every counter from one generated enum group. For example, `--preset cp` selects every counter generated from `enum name="a8xx_cp_perfcounter_select"`:
+
+```bash
+adb shell 'su -c "/data/local/tmp/adreno_perf_stream --preset cp -i 0.001 --csv"'
+```
+
+The full enum-style spelling is also accepted:
+
+```bash
+adb shell 'su -c "/data/local/tmp/adreno_perf_stream --preset a8xx_cp_perfcounter_select -i 0.001 --csv"'
+```
+
+`--preset` is repeatable and can be combined with normal counter queries:
+
+```bash
+adb shell 'su -c "/data/local/tmp/adreno_perf_stream --preset sp --preset uche -i 0.001 --csv SP_BUSY_CYCLES"'
+```
+
+Important: this selects the whole generated enum, but the kernel/hardware may not allow every counter in that group to be active at the same time. Counters that fail `GET` are reported and skipped; the CSV header only contains counters that successfully activated.

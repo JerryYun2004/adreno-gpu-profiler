@@ -1,0 +1,25 @@
+group,TP
+capacity,12
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 128 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,TP_FILTER_WORKLOAD_16BIT,0x9,12,0x26c,0x26d
+GET_OK,TP_FILTER_WORKLOAD_32BIT,0x9,13,0x26a,0x26b
+GET_OK,TP_QUADS_RECEIVED,0x9,14,0x268,0x269
+GET_OK,TP_QUADS_OFFSET,0x9,15,0x266,0x267
+GET_OK,TP_QUADS_SHADOW,0x9,16,0x264,0x265
+GET_OK,TP_QUADS_ARRAY,0x9,17,0x262,0x263
+GET_OK,TP_QUADS_GRADIENT,0x9,18,0x260,0x261
+GET_OK,TP_QUADS_1D,0x9,19,0x25e,0x25f
+GET_OK,TP_QUADS_2D,0x9,20,0x25c,0x25d
+GET_OK,TP_QUADS_BUFFER,0x9,21,0x25a,0x25b
+GET_OK,TP_QUADS_3D,0x9,22,0x258,0x259
+GET_OK,TP_QUADS_CUBE,0x9,23,0x256,0x257
+result,ok
+active_counters,12
+attempted_counters,12
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172208/10_TP/TP_chunk002.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172208/10_TP/TP_chunk002_benchmark.log
+rows,1255
+benchmark_exit_status,0

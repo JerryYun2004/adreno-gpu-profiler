@@ -1,0 +1,58 @@
+[run] output directory: /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734
+[run] duration per chunk: 2.000000 s
+[run] interval: 0.001000 s
+[run] bursts per chunk: 3
+[run] burst sleep: 0.200000 s
+[run] benchmark command: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+
+[group] CP: total selected counters=91, physical slots=14
+[chunk] CP chunk 1 starting at enum-filtered index 0
+[GET] CP_NEVER_COUNT                               group=0x0 selector=0 reg_low=0x1ca reg_high=0x1cb
+[GET] CP_ALWAYS_COUNT                              group=0x0 selector=1 reg_low=0x1c8 reg_high=0x1c9
+[GET] CP_BUSY_GFX_CORE_IDLE                        group=0x0 selector=2 reg_low=0x1c6 reg_high=0x1c7
+[GET] CP_BUSY_CYCLES                               group=0x0 selector=3 reg_low=0x1c4 reg_high=0x1c5
+[GET] CP_NUM_PREEMPTIONS                           group=0x0 selector=4 reg_low=0x1c2 reg_high=0x1c3
+[GET] CP_PREEMPTION_REACTION_DELAY                 group=0x0 selector=5 reg_low=0x1c0 reg_high=0x1c1
+[GET] CP_PREEMPTION_SWITCH_OUT_TIME                group=0x0 selector=6 reg_low=0x1be reg_high=0x1bf
+[GET] CP_PREEMPTION_SWITCH_IN_TIME                 group=0x0 selector=7 reg_low=0x1bc reg_high=0x1bd
+[GET] CP_DEAD_DRAWS_IN_BIN_RENDER                  group=0x0 selector=8 reg_low=0x1ba reg_high=0x1bb
+[GET] CP_PREDICATED_DRAWS_KILLED                   group=0x0 selector=9 reg_low=0x1b8 reg_high=0x1b9
+[GET] CP_MODE_SWITCH                               group=0x0 selector=10 reg_low=0x1b6 reg_high=0x1b7
+[GET] CP_ZPASS_DONE                                group=0x0 selector=11 reg_low=0x1b4 reg_high=0x1b5
+[GET] CP_CONTEXT_DONE                              group=0x0 selector=12 reg_low=0x1b2 reg_high=0x1b3
+[GET] CP_CACHE_FLUSH                               group=0x0 selector=13 reg_low=0x1b0 reg_high=0x1b1
+[bench] pid=8253 bursts=3 burst_sleep=0.200000 cmd=/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] log=/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/01_CP/CP_chunk001_benchmark.log
+[chunk] saved /data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_130734/01_CP/CP_chunk001.csv (14 active counters, 1265 rows)
+[chunk] CP chunk 2 starting at enum-filtered index 14
+[GET] CP_LONG_PREEMPTIONS                          group=0x0 selector=14 reg_low=0x1ca reg_high=0x1cb
+[GET] CP_SQE_I_CACHE_STARVE                        group=0x0 selector=15 reg_low=0x1c8 reg_high=0x1c9
+[GET] CP_SQE_IDLE                                  group=0x0 selector=16 reg_low=0x1c6 reg_high=0x1c7
+[GET] CP_SQE_PM4_STARVE_RB                         group=0x0 selector=17 reg_low=0x1c4 reg_high=0x1c5
+[GET] CP_SQE_PM4_STARVE_IB1                        group=0x0 selector=18 reg_low=0x1c2 reg_high=0x1c3
+[GET] CP_SQE_PM4_STARVE_IB2                        group=0x0 selector=19 reg_low=0x1c0 reg_high=0x1c1
+[GET] CP_SQE_PM4_STARVE_IB3                        group=0x0 selector=20 reg_low=0x1be reg_high=0x1bf
+[GET] CP_SQE_PM4_STARVE_FSDT                       group=0x0 selector=21 reg_low=0x1bc reg_high=0x1bd
+[GET] CP_SQE_PM4_STARVE_SDS                        group=0x0 selector=22 reg_low=0x1ba reg_high=0x1bb
+[GET] CP_SQE_MRB_STARVE                            group=0x0 selector=23 reg_low=0x1b8 reg_high=0x1b9
+[GET] CP_SQE_RRB_STARVE                            group=0x0 selector=24 reg_low=0x1b6 reg_high=0x1b7
+[GET] CP_SQE_VSD_STARVE                            group=0x0 selector=25 reg_low=0x1b4 reg_high=0x1b5
+[GET] CP_VSD_DECODE_STARVE                         group=0x0 selector=26 reg_low=0x1b2 reg_high=0x1b3
+[GET] CP_SQE_PIPE_OUT_STALL                        group=0x0 selector=27 reg_low=0x1b0 reg_high=0x1b1
+[bench] command: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] bursts: 3
+[bench] burst_sleep_s: 0.200000
+[bench] burst 1/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.6866,1243447176.299,8.000,9.948,PASS,"Adreno (TM) 830"
+[bench] burst 1/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 2/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.3088,1602344739.693,8.000,12.819,PASS,"Adreno (TM) 830"
+[bench] burst 2/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 3/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.1797,1777639140.828,8.000,14.221,PASS,"Adreno (TM) 830"
+[bench] burst 3/3 exit_status=0

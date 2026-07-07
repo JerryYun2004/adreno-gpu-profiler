@@ -1,0 +1,22 @@
+group,RBBM
+capacity,4
+duration_s,4.000000
+interval_s,0.001000
+bursts,1
+burst_sleep_s,0.000000
+width_count,5
+width_sleep_s,0.100000
+benchmark_cmd_base,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --rows 128 --repeats 4 --csv
+widths,128,256,512,1024,2048
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,RBBM_S_PC_BUSY,0x1,12,0x1d2,0x1d3
+GET_OK,RBBM_S_TESS_BUSY,0x1,13,0x1d0,0x1d1
+GET_OK,RBBM_S_TSEFE_BUSY,0x1,14,0x1ce,0x1cf
+GET_OK,RBBM_S_TSEBE_BUSY,0x1,15,0x1cc,0x1cd
+result,ok
+active_counters,4
+attempted_counters,4
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_152944/02_RBBM/RBBM_chunk004.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260625_152944/02_RBBM/RBBM_chunk004_benchmark.log
+rows,2572
+benchmark_exit_status,0

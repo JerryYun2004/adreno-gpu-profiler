@@ -1,0 +1,43 @@
+0625_130734/09_UCHE/UCHE_chunk004.csv (24 active counters, 1232 rows)
+[chunk] UCHE chunk 5 starting at enum-filtered index 96
+[GET] UCHE_RESERVED_96                             group=0x8 selector=96 reg_low=0x254 reg_high=0x255
+[GET] UCHE_RESERVED_97                             group=0x8 selector=97 reg_low=0x252 reg_high=0x253
+[GET] UCHE_RESERVED_98                             group=0x8 selector=98 reg_low=0x250 reg_high=0x251
+[GET] UCHE_RESERVED_99                             group=0x8 selector=99 reg_low=0x24e reg_high=0x24f
+[GET] UCHE_RESERVED_100                            group=0x8 selector=100 reg_low=0x24c reg_high=0x24d
+[GET] UCHE_RESERVED_101                            group=0x8 selector=101 reg_low=0x24a reg_high=0x24b
+[GET] UCHE_RESERVED_102                            group=0x8 selector=102 reg_low=0x248 reg_high=0x249
+[GET] UCHE_RESERVED_103                            group=0x8 selector=103 reg_low=0x246 reg_high=0x247
+[GET] UCHE_RESERVED_104                            group=0x8 selector=104 reg_low=0x244 reg_high=0x245
+[GET] UCHE_RESERVED_105                            group=0x8 selector=105 reg_low=0x242 reg_high=0x243
+[GET] UCHE_RESERVED_106                            group=0x8 selector=106 reg_low=0x240 reg_high=0x241
+[GET] UCHE_RESERVED_107                            group=0x8 selector=107 reg_low=0x23e reg_high=0x23f
+[GET] UCHE_RESERVED_108                            group=0x8 selector=108 reg_low=0x23c reg_high=0x23d
+[GET] UCHE_RESERVED_109                            group=0x8 selector=109 reg_low=0x23a reg_high=0x23b
+[GET] UCHE_RESERVED_110                            group=0x8 selector=110 reg_low=0x238 reg_high=0x239
+[GET] UCHE_RESERVED_111                            group=0x8 selector=111 reg_low=0x236 reg_high=0x237
+[GET] UCHE_RESERVED_112                            group=0x8 selector=112 reg_low=0x234 reg_high=0x235
+[GET] UCHE_RESERVED_113                            group=0x8 selector=113 reg_low=0x232 reg_high=0x233
+[GET] UCHE_RESERVED_114                            group=0x8 selector=114 reg_low=0x230 reg_high=0x231
+[GET] UCHE_RESERVED_115                            group=0x8 selector=115 reg_low=0x22e reg_high=0x22f
+[GET] UCHE_RESERVED_116                            group=0x8 selector=116 reg_low=0x22c reg_high=0x22d
+[GET] UCHE_RESERVED_117                            group=0x8 selector=117 reg_low=0x22a reg_high=0x22b
+[GET] UCHE_RESERVED_118                            group=0x8 selector=118 reg_low=0x228 reg_high=0x229
+[GET] UCHE_RESERVED_119                            group=0x8 selector=119 reg_low=0x226 reg_high=0x227
+[bench] command: /data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 128 --repeats 16 --csv
+[bench] bursts: 3
+[bench] burst_sleep_s: 0.200000
+[bench] burst 1/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.4798,1417143969.229,8.000,11.337,PASS,"Adreno (TM) 830"
+[bench] burst 1/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 2/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.3094,1601643532.220,8.000,12.813,PASS,"Adreno (TM) 830"
+[bench] burst 2/3 exit_status=0
+[bench] sleeping 0.200000 s before next burst
+[bench] burst 3/3 start
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,fused_lmem,1024,128,131072,16,1.3303,1576436204.439,8.000,12.611,PASS,"Adreno (TM) 830"
+[bench] burst 3/3 exit_status=0

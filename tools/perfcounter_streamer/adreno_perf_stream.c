@@ -15,14 +15,16 @@
 #include <string.h>
 #include <strings.h>
 #include <sys/ioctl.h>
+#include <sys/stat.h>
 #include <time.h>
 #include <unistd.h>
 
-#define CSV_TEMP_PATH "/data/local/tmp/adreno_perf_stream_last.csv"
+#define CSV_TEMP_PATH "/data/local/tmp/jerry_work/adreno_perf_stream_last.csv"
 
 #define ADRENO_IOC_TYPE 0x09
-#define MAX_SELECTED 64
+#define MAX_SELECTED 2048
 #define MAX_MATCHES 32
+#define MAX_PRESETS 64
 #define DEFAULT_DEVICE "/dev/kgsl-3d0"
 
 struct adreno_perfcounter_get {
@@ -75,7 +77,7 @@ static void on_signal(int sig) {
 }
 
 static void sleep_seconds(double seconds) {
-  if (seconds < 0.001) seconds = 0.001;
+  if (seconds < 0.000001) seconds = 0.000001;
   struct timespec req;
   req.tv_sec = (time_t)seconds;
   req.tv_nsec = (long)((seconds - (double)req.tv_sec) * 1000000000.0);
@@ -187,6 +189,93 @@ static int already_selected(const size_t *selected, size_t n, size_t idx) {
   return 0;
 }
 
+static void normalize_token(const char *in, char *out, size_t out_sz) {
+  lower_squash(in, out, out_sz);
+}
+
+static void preset_to_group_token(const char *preset, char *out, size_t out_sz) {
+  char tmp[256];
+  const char *start = preset;
+  size_t len = strlen(preset);
+
+  if (strncasecmp(start, "a8xx_", 5) == 0) {
+    start += 5;
+    len -= 5;
+  }
+
+  const char *suffix = "_perfcounter_select";
+  size_t suffix_len = strlen(suffix);
+  if (len >= suffix_len && strcasecmp(start + len - suffix_len, suffix) == 0) {
+    len -= suffix_len;
+  }
+
+  if (len >= sizeof(tmp)) len = sizeof(tmp) - 1;
+  memcpy(tmp, start, len);
+  tmp[len] = '\0';
+  normalize_token(tmp, out, out_sz);
+}
+
+static int group_token_matches(const char *group_name, const char *preset) {
+  char g[128], p[128];
+  normalize_token(group_name, g, sizeof(g));
+  preset_to_group_token(preset, p, sizeof(p));
+  return p[0] && strcmp(g, p) == 0;
+}
+
+static int add_selected_idx(size_t *selected, size_t *selected_n, size_t idx) {
+  if (already_selected(selected, *selected_n, idx)) return 0;
+  if (*selected_n >= MAX_SELECTED) {
+    fprintf(stderr, "[select] too many counters selected; increase MAX_SELECTED above %d\n", MAX_SELECTED);
+    return -1;
+  }
+  selected[(*selected_n)++] = idx;
+  return 0;
+}
+
+static void print_preset_groups(void) {
+  printf("Available --preset groups generated from a8xx_*_perfcounter_select enums:\n");
+  for (size_t i = 0; i < k_num_counters; ++i) {
+    int first = 1;
+    for (size_t j = 0; j < i; ++j) {
+      if (strcmp(k_counters[j].group_name, k_counters[i].group_name) == 0) {
+        first = 0;
+        break;
+      }
+    }
+    if (!first) continue;
+
+    size_t count = 0;
+    for (size_t j = 0; j < k_num_counters; ++j) {
+      if (strcmp(k_counters[j].group_name, k_counters[i].group_name) == 0) ++count;
+    }
+    printf("  %-12s %zu counters\n", k_counters[i].group_name, count);
+  }
+}
+
+static int add_preset_group(const char *preset, size_t *selected, size_t *selected_n) {
+  int added = 0;
+  int want_all = 0;
+  char p[128];
+  preset_to_group_token(preset, p, sizeof(p));
+  if (strcmp(p, "all") == 0) want_all = 1;
+
+  for (size_t i = 0; i < k_num_counters; ++i) {
+    if (want_all || group_token_matches(k_counters[i].group_name, preset)) {
+      if (add_selected_idx(selected, selected_n, i) == 0) ++added;
+      else return -1;
+    }
+  }
+
+  if (added == 0) {
+    fprintf(stderr, "[preset] unknown preset '%s'\n", preset);
+    print_preset_groups();
+    return -1;
+  }
+
+  printf("[preset] selected %d counters from '%s'\n", added, preset);
+  return 0;
+}
+
 static void print_counter_line(size_t idx, int number) {
   const struct counter_desc *c = &k_counters[idx];
   if (number >= 0) printf("  [%2d] ", number);
@@ -211,9 +300,7 @@ static int prompt_select_from_matches(const char *query, size_t *selected, size_
   char line[256];
   if (!fgets(line, sizeof(line), stdin)) return -1;
   if (line[0] == '\n' || line[0] == '\0') {
-    if (*selected_n < MAX_SELECTED && !already_selected(selected, *selected_n, matches[0].idx)) {
-      selected[(*selected_n)++] = matches[0].idx;
-    }
+    add_selected_idx(selected, selected_n, matches[0].idx);
     return 0;
   }
 
@@ -226,9 +313,7 @@ static int prompt_select_from_matches(const char *query, size_t *selected, size_
       continue;
     }
     size_t idx = matches[choice - 1].idx;
-    if (*selected_n < MAX_SELECTED && !already_selected(selected, *selected_n, idx)) {
-      selected[(*selected_n)++] = idx;
-    }
+    add_selected_idx(selected, selected_n, idx);
   }
   return 0;
 }
@@ -236,7 +321,7 @@ static int prompt_select_from_matches(const char *query, size_t *selected, size_
 static int add_query_or_prompt(const char *query, size_t *selected, size_t *selected_n, int interactive) {
   for (size_t i = 0; i < k_num_counters; ++i) {
     if (strcasecmp(query, k_counters[i].xml_name) == 0 || strcasecmp(query, k_counters[i].short_name) == 0) {
-      if (*selected_n < MAX_SELECTED && !already_selected(selected, *selected_n, i)) selected[(*selected_n)++] = i;
+      add_selected_idx(selected, selected_n, i);
       return 0;
     }
   }
@@ -244,7 +329,7 @@ static int add_query_or_prompt(const char *query, size_t *selected, size_t *sele
   struct match_item matches[2];
   size_t n = find_matches(query, matches, 2);
   if (!interactive && n > 0) {
-    if (*selected_n < MAX_SELECTED && !already_selected(selected, *selected_n, matches[0].idx)) selected[(*selected_n)++] = matches[0].idx;
+    add_selected_idx(selected, selected_n, matches[0].idx);
     return 0;
   }
   return prompt_select_from_matches(query, selected, selected_n);
@@ -299,7 +384,9 @@ static double now_seconds(void) {
 static void print_usage(const char *argv0) {
   printf("Usage:\n");
   printf("  %s -i <seconds> <counter query> [counter query ...]\n", argv0);
-  printf("  %s -l <counter search term>\n\n", argv0);
+  printf("  %s --preset <group> -i <seconds> [additional counter query ...]\n", argv0);
+  printf("  %s -l <counter search term>\n", argv0);
+  printf("  %s --list-presets\n\n", argv0);
   printf("Counter query can be an exact counter name, a short name, or a fuzzy search term.\n");
   printf("Multiple counters can be selected in one command. Values printed on the terminal\n");
   printf("are deltas since the previous sample. elapsed_s is not printed on the terminal,\n");
@@ -310,11 +397,16 @@ static void print_usage(const char *argv0) {
   printf("  -n                 Non-interactive: choose best fuzzy match automatically.\n");
   printf("  -l <query>         List matching counters and exit. Use this to test fuzzy search.\n");
   printf("  --csv              Print CSV rows on terminal. Default terminal output is name=value.\n");
+  printf("  --preset <group>   Select every counter in one generated enum group, e.g. cp, sp, uche.\n");
+  printf("                     Also accepts a8xx_cp_perfcounter_select style names. Repeatable.\n");
+  printf("  --list-presets     List available preset groups and exit.\n");
   printf("  -h                 Show this help.\n\n");
   printf("Examples:\n");
   printf("  %s -i 1 SP_BUSY_CYCLES SP_ALU_WORKING_CYCLES\n", argv0);
   printf("  %s -i 0.5 busy alu instruction\n", argv0);
   printf("  %s -n -i 0.2 busy alu\n", argv0);
+  printf("  %s --preset cp -i 0.001 --csv\n", argv0);
+  printf("  %s --preset a8xx_sp_perfcounter_select -i 0.001 --csv\n", argv0);
   printf("  %s -l alu\n", argv0);
   printf("  %s -l fs_instruction\n", argv0);
 }
@@ -350,6 +442,36 @@ static void strip_newline(char *s) {
   if (!s) return;
   size_t n = strlen(s);
   while (n > 0 && (s[n - 1] == '\n' || s[n - 1] == '\r')) s[--n] = '\0';
+}
+
+static int mkdir_p_parent_dir(const char *path) {
+  char tmp[512];
+  size_t len = strlen(path);
+  if (len >= sizeof(tmp)) {
+    fprintf(stderr, "[csv] path too long: %s\n", path);
+    return -1;
+  }
+  memcpy(tmp, path, len + 1);
+
+  char *slash = strrchr(tmp, '/');
+  if (!slash || slash == tmp) return 0;
+  *slash = '\0';
+
+  for (char *p = tmp + 1; *p; ++p) {
+    if (*p == '/') {
+      *p = '\0';
+      if (mkdir(tmp, 0775) == -1 && errno != EEXIST) {
+        fprintf(stderr, "[csv] failed to create directory '%s': %s\n", tmp, strerror(errno));
+        return -1;
+      }
+      *p = '/';
+    }
+  }
+  if (mkdir(tmp, 0775) == -1 && errno != EEXIST) {
+    fprintf(stderr, "[csv] failed to create directory '%s': %s\n", tmp, strerror(errno));
+    return -1;
+  }
+  return 0;
 }
 
 static int copy_file(const char *src, const char *dst) {
@@ -428,12 +550,33 @@ int main(int argc, char **argv) {
   double interval = -1.0;
   int interactive = 1;
   int csv = 0;
+  int list_presets = 0;
   const char *list_query = NULL;
+  const char *preset_args[MAX_PRESETS];
+  size_t preset_n = 0;
 
   int new_argc = 1;
   for (int i = 1; i < argc; ++i) {
     if (strcmp(argv[i], "--csv") == 0) {
       csv = 1;
+    } else if (strcmp(argv[i], "--list-presets") == 0) {
+      list_presets = 1;
+    } else if (strcmp(argv[i], "--preset") == 0) {
+      if (i + 1 >= argc) {
+        fprintf(stderr, "--preset requires a group name, for example --preset cp\n");
+        return 2;
+      }
+      if (preset_n >= MAX_PRESETS) {
+        fprintf(stderr, "too many --preset arguments; max is %d\n", MAX_PRESETS);
+        return 2;
+      }
+      preset_args[preset_n++] = argv[++i];
+    } else if (strncmp(argv[i], "--preset=", 9) == 0) {
+      if (preset_n >= MAX_PRESETS) {
+        fprintf(stderr, "too many --preset arguments; max is %d\n", MAX_PRESETS);
+        return 2;
+      }
+      preset_args[preset_n++] = argv[i] + 9;
     } else {
       argv[new_argc++] = argv[i];
     }
@@ -452,6 +595,11 @@ int main(int argc, char **argv) {
     }
   }
 
+  if (list_presets) {
+    print_preset_groups();
+    return 0;
+  }
+
   if (list_query) {
     struct match_item matches[MAX_MATCHES];
     size_t n = find_matches(list_query, matches, MAX_MATCHES);
@@ -463,7 +611,11 @@ int main(int argc, char **argv) {
   size_t selected[MAX_SELECTED];
   size_t selected_n = 0;
 
-  if (optind >= argc) {
+  for (size_t i = 0; i < preset_n; ++i) {
+    if (add_preset_group(preset_args[i], selected, &selected_n) != 0) return 2;
+  }
+
+  if (optind >= argc && selected_n == 0) {
     print_usage(argv[0]);
     printf("\nEnter counter search terms, comma-separated\n");
     printf("Example input: busy, alu, fs_instruction\n");
@@ -532,12 +684,43 @@ int main(int argc, char **argv) {
     return 1;
   }
 
+  printf("[csv] temp path for this run: %s\n", CSV_TEMP_PATH);
+  if (mkdir_p_parent_dir(CSV_TEMP_PATH) != 0) {
+    fprintf(stderr, "[csv] refusing to continue because CSV directory could not be created.\n");
+    cleanup_active(fd, active_n, active_idx);
+    free(groups);
+    free(oldv);
+    free(newv);
+    free(diffv);
+    close(fd);
+    return 1;
+  }
+  if (unlink(CSV_TEMP_PATH) == -1 && errno != ENOENT) {
+    fprintf(stderr, "[csv] failed to remove old temporary CSV '%s': %s\n",
+            CSV_TEMP_PATH, strerror(errno));
+    fprintf(stderr, "[csv] refusing to continue because pulling this path later could return a stale CSV.\n");
+    cleanup_active(fd, active_n, active_idx);
+    free(groups);
+    free(oldv);
+    free(newv);
+    free(diffv);
+    close(fd);
+    return 1;
+  }
+
   FILE *csv_file = fopen(CSV_TEMP_PATH, "w");
   if (!csv_file) {
     fprintf(stderr, "[csv] failed to open temporary CSV '%s': %s\n", CSV_TEMP_PATH, strerror(errno));
-  } else {
-    csv_write_header(csv_file, active_n, active_idx);
+    fprintf(stderr, "[csv] refusing to continue because pulling this path later could return a stale CSV.\n");
+    cleanup_active(fd, active_n, active_idx);
+    free(groups);
+    free(oldv);
+    free(newv);
+    free(diffv);
+    close(fd);
+    return 1;
   }
+  csv_write_header(csv_file, active_n, active_idx);
   for (size_t i = 0; i < active_n; ++i) {
     const struct counter_desc *c = &k_counters[active_idx[i]];
     groups[i].group_id = c->group_id;

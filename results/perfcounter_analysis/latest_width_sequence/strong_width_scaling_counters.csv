@@ -1,0 +1,4 @@
+group,counter,total_all_widths,total_width_first,total_width_last,scaling_ratio_last_over_first,corr_total_vs_width,slope_total_vs_width,label,total_w128,total_w256,total_w512,total_w1024,total_w2048
+CP,CP_SQE_T4_EXEC,5689.0,785.0,2452.0,3.123566878980892,0.8041349607432378,1.279044858870968,moderate_width_scaling,785.0,0.0,0.0,2452.0,2452.0
+CP,CP_SQE_SAVE_SDS_STATE,1555.0,75.0,596.0,7.946666666666666,0.7113009040968973,0.3697286626344088,moderate_width_scaling,75.0,0.0,0.0,884.0,596.0
+CP,CP_SQE_CTXT_REG_BUNCH_EXEC,500.0,90.0,205.0,2.2777777777777777,0.7626637634112509,0.10028141801075272,moderate_width_scaling,90.0,0.0,0.0,205.0,205.0

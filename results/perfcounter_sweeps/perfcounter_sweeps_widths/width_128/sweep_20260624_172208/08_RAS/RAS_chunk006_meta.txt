@@ -1,0 +1,17 @@
+group,RAS
+capacity,4
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 128 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,RAS_SAMPLE_MASK_GEN_LANE_3_WORKING_CC_L2,0x7,20,0x224,0x225
+GET_OK,RAS_SAMPLE_MASK_GEN_LANE_4_WORKING_CC_L2,0x7,21,0x222,0x223
+GET_OK,RAS_SAMPLE_MASK_GEN_LANE_5_WORKING_CC_L2,0x7,22,0x220,0x221
+GET_OK,RAS_SAMPLE_MASK_GEN_LANE_6_WORKING_CC_L2,0x7,23,0x21e,0x21f
+result,ok
+active_counters,4
+attempted_counters,4
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172208/08_RAS/RAS_chunk006.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_128/sweep_20260624_172208/08_RAS/RAS_chunk006_benchmark.log
+rows,1300
+benchmark_exit_status,0

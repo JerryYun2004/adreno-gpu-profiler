@@ -1,0 +1,17 @@
+group,TSE
+capacity,4
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 256 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,TSE_BE_STALL_CYCLES_LRZ_BARYPLANE,0x6,4,0x21c,0x21d
+GET_OK,TSE_BE_STALL_CYCLES_LRZ_ZPLANE,0x6,5,0x21a,0x21b
+GET_OK,TSE_BE_STARVE_CYCLES_PC,0x6,6,0x218,0x219
+GET_OK,TSE_BE_INPUT_PRIM,0x6,7,0x216,0x217
+result,ok
+active_counters,4
+attempted_counters,4
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_256/sweep_20260624_172700/07_TSE/TSE_chunk002.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_256/sweep_20260624_172700/07_TSE/TSE_chunk002_benchmark.log
+rows,1293
+benchmark_exit_status,0

@@ -1,0 +1,25 @@
+group,TP
+capacity,12
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 1024 --rows 256 --repeats 256 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,TP_DIVERGENT_QUADS_RECEIVED,0x9,24,0x26c,0x26d
+GET_OK,TP_PRT_NON_RESIDENT_EVENTS,0x9,25,0x26a,0x26b
+GET_OK,TP_OUTPUT_PIXELS_POINT,0x9,26,0x268,0x269
+GET_OK,TP_OUTPUT_PIXELS_BILINEAR,0x9,27,0x266,0x267
+GET_OK,TP_OUTPUT_PIXELS_MIP,0x9,28,0x264,0x265
+GET_OK,TP_OUTPUT_PIXELS_ANISO,0x9,29,0x262,0x263
+GET_OK,TP_OUTPUT_PIXELS_ZERO_LOD,0x9,30,0x260,0x261
+GET_OK,TP_FLAG_CACHE_REQUESTS,0x9,31,0x25e,0x25f
+GET_OK,TP_FLAG_CACHE_MISSES,0x9,32,0x25c,0x25d
+GET_OK,TP_L1_5_L2_REQUESTS,0x9,33,0x25a,0x25b
+GET_OK,TP_2D_OUTPUT_PIXELS,0x9,34,0x258,0x259
+GET_OK,TP_2D_OUTPUT_PIXELS_POINT,0x9,35,0x256,0x257
+result,ok
+active_counters,12
+attempted_counters,12
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_1024/sweep_20260624_173644/10_TP/TP_chunk003.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps_widths/width_1024/sweep_20260624_173644/10_TP/TP_chunk003_benchmark.log
+rows,1254
+benchmark_exit_status,0

@@ -1,0 +1,2 @@
+op,variant,width,rows,elements,repeats,elapsed_ms,elements_per_s,estimated_bytes_per_element,estimated_bandwidth_GBps,verify,device
+softmax,online,2048,2048,4194304,512,311.0241,6904556757.294,12.000,82.855,PASS,"Adreno (TM) 830"

@@ -1,0 +1,67 @@
+#version 450
+// Online-softmax-style benchmark. One workgroup computes one row.
+// Each lane streams its chunk and keeps an online (max, normalizer) pair.
+// Workgroup then reduces pairs and does one final output pass.
+
+layout(local_size_x = 256, local_size_y = 1, local_size_z = 1) in;
+
+layout(set = 0, binding = 0, std430) readonly buffer InputBuffer { float x[]; };
+layout(set = 0, binding = 1, std430) readonly buffer WeightBuffer { float w[]; }; // unused
+layout(set = 0, binding = 2, std430) writeonly buffer OutputBuffer { float y[]; };
+
+layout(push_constant) uniform PushConstants {
+    uint width;
+    uint rows;
+    uint elements;
+    uint flags;
+    float epsilon;
+} pc;
+
+shared float m_scratch[256];
+shared float l_scratch[256];
+
+void combine_pair(inout float m_a, inout float l_a, float m_b, float l_b) {
+    float m = max(m_a, m_b);
+    l_a = l_a * exp(m_a - m) + l_b * exp(m_b - m);
+    m_a = m;
+}
+
+void main() {
+    uint row = gl_WorkGroupID.x;
+    uint tid = gl_LocalInvocationID.x;
+    if (row >= pc.rows) return;
+
+    uint base = row * pc.width;
+
+    float m = -3.402823466e+38;
+    float l = 0.0;
+
+    for (uint i = tid; i < pc.width; i += 256u) {
+        float v = x[base + i];
+        float new_m = max(m, v);
+        l = l * exp(m - new_m) + exp(v - new_m);
+        m = new_m;
+    }
+
+    m_scratch[tid] = m;
+    l_scratch[tid] = l;
+    barrier();
+
+    for (uint stride = 128u; stride > 0u; stride >>= 1u) {
+        if (tid < stride) {
+            float ma = m_scratch[tid];
+            float la = l_scratch[tid];
+            combine_pair(ma, la, m_scratch[tid + stride], l_scratch[tid + stride]);
+            m_scratch[tid] = ma;
+            l_scratch[tid] = la;
+        }
+        barrier();
+    }
+
+    float row_max = m_scratch[0];
+    float inv_sum = 1.0 / l_scratch[0];
+
+    for (uint i = tid; i < pc.width; i += 256u) {
+        y[base + i] = exp(x[base + i] - row_max) * inv_sum;
+    }
+}

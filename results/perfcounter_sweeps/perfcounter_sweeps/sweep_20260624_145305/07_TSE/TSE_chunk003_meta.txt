@@ -1,0 +1,17 @@
+group,TSE
+capacity,4
+duration_s,2.000000
+interval_s,0.001000
+benchmark_cmd,/data/local/tmp/jerry_work/ml_primitives/ml_primitive_bench --op softmax --variant fused_lmem --spv /data/local/tmp/jerry_work/ml_primitives/spv/softmax_fused_lmem.spv --width 256 --rows 256 --repeats 8 --csv
+activation_status,counter,group,selector,reg_low,reg_high_or_error
+GET_OK,TSE_BE_INPUT_NULL_PRIM,0x6,8,0x21c,0x21d
+GET_OK,TSE_BE_TRIVAL_REJ_PRIM,0x6,9,0x21a,0x21b
+GET_OK,TSE_BE_CLIPPED_PRIM,0x6,10,0x218,0x219
+GET_OK,TSE_BE_ZERO_AREA_PRIM,0x6,11,0x216,0x217
+result,ok
+active_counters,4
+attempted_counters,4
+csv,/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260624_145305/07_TSE/TSE_chunk003.csv
+benchmark_log,/data/local/tmp/jerry_work/perfcounter_sweeps/sweep_20260624_145305/07_TSE/TSE_chunk003_benchmark.log
+rows,1307
+benchmark_exit_status,0
